@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PetSelection.unity
     guid: da5ac610fde5d864fb17aa9f8d14dd46
+  - enabled: 1
+    path: Assets/Scenes/PetHome.unity
+    guid: 175f72caf86f41b4e981115abcff752b
   m_configObjects: {}
