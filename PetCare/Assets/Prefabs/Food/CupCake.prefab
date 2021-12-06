@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3080718426959685794}
   - component: {fileID: 3080718426953416864}
   - component: {fileID: 5292262787554523491}
+  - component: {fileID: 5521867534733169959}
   m_Layer: 0
   m_Name: CupCake
   m_TagString: Untagged
@@ -122,3 +123,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.19980368, y: 0.22599004, z: 0.20779856}
   m_Center: {x: 0, y: 0.11383086, z: 0}
+--- !u!114 &5521867534733169959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3080718426953385474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de7d1cef36a7d2479c71f3cd8fff3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  food: {fileID: 3080718426953385474}
+  healthAmount: 10

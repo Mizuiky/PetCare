@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4454382041392262933}
   - component: {fileID: 4423259182244254037}
   - component: {fileID: 5645518639895704768}
+  - component: {fileID: 1380112849283694185}
   m_Layer: 8
   m_Name: WhiteDonut
   m_TagString: Untagged
@@ -110,3 +111,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.09873473, z: 0.2927999}
   m_Center: {x: 0, y: 0.049468774, z: 0.000000007450582}
+--- !u!114 &1380112849283694185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432034724618832495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de7d1cef36a7d2479c71f3cd8fff3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  food: {fileID: 4432034724618832495}
+  healthAmount: 10

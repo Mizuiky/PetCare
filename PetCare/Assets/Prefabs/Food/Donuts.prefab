@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7531141425230098434}
   - component: {fileID: 7507843648320920280}
   - component: {fileID: 1212419329724927740}
+  - component: {fileID: 6670862292958932852}
   m_Layer: 8
   m_Name: Donuts
   m_TagString: Untagged
@@ -110,3 +111,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.102604285, z: 0.2927999}
   m_Center: {x: 0, y: 0.051531024, z: 0.000000007450582}
+--- !u!114 &6670862292958932852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7553720852368140098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de7d1cef36a7d2479c71f3cd8fff3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  food: {fileID: 7553720852368140098}
+  healthAmount: 10

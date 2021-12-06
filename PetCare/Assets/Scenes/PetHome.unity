@@ -408,6 +408,23 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 2283889919874634373, guid: 2fc91beb1c8430449bacd27eca591e1f, type: 3}
   m_PrefabInstance: {fileID: 471376219}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1402208071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5605921523194644106, guid: 6e19de98f9c8a70459ad53891d2427bc, type: 3}
+  m_PrefabInstance: {fileID: 5605921523735834486}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1402208072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402208071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfb3980bb3f5944fa5fec7baf02eb5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1697192062 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6476598478142386099, guid: 20c1cf4ed529c3a4f936ffe82e4e7172, type: 3}
@@ -774,6 +791,10 @@ PrefabInstance:
     - target: {fileID: 6476598478142386099, guid: 20c1cf4ed529c3a4f936ffe82e4e7172, type: 3}
       propertyPath: m_Name
       value: FoodBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 6476598478142386099, guid: 20c1cf4ed529c3a4f936ffe82e4e7172, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20c1cf4ed529c3a4f936ffe82e4e7172, type: 3}
