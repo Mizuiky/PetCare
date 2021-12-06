@@ -4,20 +4,10 @@ using UnityEngine;
 
 public class RaycastTouch : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] food;
-
-    private Vector3 touchPosWorld;
-
-    private TouchPhase touchPhase = TouchPhase.Ended;
-
-    // Start is called before the first frame update
     void Start()
     {
        
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButton(0))
@@ -38,8 +28,4 @@ public class RaycastTouch : MonoBehaviour
         }
     }
 
-    public void InstantiateFood(Collider food)
-    {
-       
-    }
 }
