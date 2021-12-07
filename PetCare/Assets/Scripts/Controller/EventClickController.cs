@@ -8,8 +8,6 @@ public class EventClickController : MonoBehaviour
     public delegate void PlayerRotation (bool rotateToRight);
     public static event PlayerRotation OnPlayerRotated;
 
-
-
     #region Scene Events
 
     public void ChangeScene(string currentlyScene)
