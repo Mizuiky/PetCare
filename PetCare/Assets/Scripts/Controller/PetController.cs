@@ -58,9 +58,16 @@ public class PetController : MonoBehaviour, IActivate
         this.status = new PetStatus();
         this.SetInitialStatus();
 
-        OnChangedStatus(this.status);
+        if(OnChangedStatus != null)
+        {
+            Debug.Log("start change status");
+            OnChangedStatus(this.status);
+        }
+        
+        TimerController.OnDecreasedStatus += this.ModifyStatus;
 
-        EventClickController.OnPlayerRotated += RotatePlayer;
+        EventClickController.OnPlayerRotated += this.RotatePlayer;
+
         this.Activate();       
     }
 
@@ -70,12 +77,12 @@ public class PetController : MonoBehaviour, IActivate
         if(Input.GetMouseButtonDown(0))
         {
             Debug.Log("Time to increase status");
-            this.ChangeStatus(true);
+            //this.ChangeStatus(true);
         }
         else if (Input.GetMouseButtonDown(1))
         {
             Debug.Log("Time to decrease status");
-            this.ChangeStatus(false);
+            //this.ChangeStatus(false);
         }
     }
     void OnDisable()
@@ -93,20 +100,14 @@ public class PetController : MonoBehaviour, IActivate
         this.status.happiness = this.initialHappiness;
     }
 
-    private void ChangeStatus(bool increase)
+    private void ModifyStatus()
     {
-        if(increase)
-        {
-            this.IncreaseStatus(this.amount);
+        this.DecreaseStatus(this.amount);
 
-        }
-        else
+        if (OnChangedStatus != null)
         {
-            this.DecreaseStatus(this.amount);
+            OnChangedStatus(this.status);
         }
-        
-
-        OnChangedStatus(this.status);
     }
 
     private void IncreaseStatus(int amount)

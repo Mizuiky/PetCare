@@ -7,11 +7,14 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private HUD hud;
 
+    private void Awake()
+    {
+        PetController.OnChangedStatus += this.UpdateHud;
+    }
     void Start()
     {
-        PetController.OnChangedStatus += UpdateHud;
+        
     }
-
     
     void Update()
     {
@@ -20,9 +23,11 @@ public class UIController : MonoBehaviour
 
     private void UpdateHud(PetStatus status)
     {
-        this.hud.UpdateStatusBar(status);
+        Debug.Log("updateHUD");
 
         //update this when player gain level on happiness and hungry
         this.hud.UpdateMaxStatusBar(status);
+
+        this.hud.UpdateStatusBar(status);
     }
 }
