@@ -60,33 +60,26 @@ public class PetController : MonoBehaviour, IActivate
 
         if(OnChangedStatus != null)
         {
-            Debug.Log("start change status");
+            //Debug.Log("start to change status");
             OnChangedStatus(this.status);
         }
         
-        TimerController.OnDecreasedStatus += this.ModifyStatus;
+        TimerController.OnDecreasedStatus += ModifyStatus;
 
-        EventClickController.OnPlayerRotated += this.RotatePlayer;
+        EventClickController.OnPlayerRotated += RotatePlayer;
 
         this.Activate();       
     }
 
     // Update is called once per frame
     void Update()
-    {   
-        if(Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("Time to increase status");
-            //this.ChangeStatus(true);
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            Debug.Log("Time to decrease status");
-            //this.ChangeStatus(false);
-        }
+    {  
+
     }
     void OnDisable()
     {
+        TimerController.OnDecreasedStatus -= ModifyStatus;
+
         EventClickController.OnPlayerRotated -= RotatePlayer;
         this.Deactivate();
     }
@@ -131,7 +124,6 @@ public class PetController : MonoBehaviour, IActivate
     #region Player Rotation
     public void RotatePlayer(bool rightSide)
     {
-        Debug.Log("RotatePlayer called");
         if (!rightSide)
         {
             this.transform.Rotate(- new Vector3(0, rotationAmount, 0));

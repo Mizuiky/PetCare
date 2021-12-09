@@ -23,9 +23,9 @@ public class UIController : MonoBehaviour
 
     private void UpdateHud(PetStatus status)
     {
-        Debug.Log("updateHUD");
+        //Debug.Log("updateHUD");
 
-        //update this when player gain level on happiness and hungry
+        //update this when player gain level on happiness and hungry, create an initial method to set the initial max status
         this.hud.UpdateMaxStatusBar(status);
 
         this.hud.UpdateStatusBar(status);

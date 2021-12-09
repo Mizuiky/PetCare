@@ -23,13 +23,13 @@ public class TimerController : MonoBehaviour
 
     private IEnumerator Timer()
     {
-        yield return new WaitForSeconds(3f);
-        Debug.Log("waiting until start began");
+        yield return new WaitForSeconds(2f);
+        //Debug.Log("waiting until start began");
 
         while (true)
         {
             yield return new WaitForSeconds(this.timeToDecreaseStatus);
-            Debug.Log("Time to decrease");
+            //Debug.Log("Time to decrease");
             OnDecreasedStatus();
         }     
     }

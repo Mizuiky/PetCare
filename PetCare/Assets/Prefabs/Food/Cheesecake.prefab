@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8631163757437892563}
   - component: {fileID: 8610570002101843101}
   - component: {fileID: 2974539421400544406}
-  - component: {fileID: 5602568618897363444}
   m_Layer: 0
   m_Name: Cheesecake
   m_TagString: Untagged
@@ -62,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c84dda17c95484eaca9d29a983138b14, type: 2}
+  - {fileID: 2100000, guid: 925db7878b322934f8d5c1ea209a399e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,21 +106,7 @@ BoxCollider:
   m_GameObject: {fileID: 8619622568505366239}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.20007558, y: 0.19912761, z: 0.32372907}
   m_Center: {x: -0.00000007823109, y: 0.10008767, z: 0.04052531}
---- !u!114 &5602568618897363444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8619622568505366239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9de7d1cef36a7d2479c71f3cd8fff3a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  food: {fileID: 8619622568505366239}
-  healthAmount: 10
