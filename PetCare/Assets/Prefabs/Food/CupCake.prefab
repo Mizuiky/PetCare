@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1648766965575575401}
   - component: {fileID: 8827231586755543109}
   - component: {fileID: 2058487329873864453}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CupCake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ BoxCollider:
   m_GameObject: {fileID: 5374621232560835650}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.19980368, y: 0.22599004, z: 0.20779856}
   m_Center: {x: 0, y: 0.11383086, z: 0}

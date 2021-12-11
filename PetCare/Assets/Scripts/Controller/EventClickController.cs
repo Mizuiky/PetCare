@@ -8,6 +8,12 @@ public class EventClickController : MonoBehaviour
     public delegate void PlayerRotation (bool rotateToRight);
     public static event PlayerRotation OnPlayerRotated;
 
+    public delegate void NotifyKitchen();
+    public static event NotifyKitchen OnNotifiedKitchen;
+
+    public delegate void ChangeButtonStatus(bool active);
+    public static event ChangeButtonStatus OnChangedButtonStatus;
+
     #region Scene Events
 
     public void ChangeScene(string currentlyScene)
@@ -38,5 +44,21 @@ public class EventClickController : MonoBehaviour
         }  
     }
 
+    #endregion
+
+    #region Kitchen Notification
+
+    public void OpenKitchen()
+    {
+        if(OnChangedButtonStatus != null)
+        {
+            OnChangedButtonStatus(false);
+        }
+
+        if(OnNotifiedKitchen != null)
+        {
+            OnNotifiedKitchen();
+        }
+    }
     #endregion
 }

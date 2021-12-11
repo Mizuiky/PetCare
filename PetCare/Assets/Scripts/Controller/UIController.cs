@@ -7,9 +7,13 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private HUD hud;
 
+    [SerializeField]
+    private GameObject[] UIButtons;
+
     private void Awake()
     {
         PetController.OnChangedStatus += this.UpdateHud;
+        EventClickController.OnChangedButtonStatus += this.UpdateButtonActiveStatus;
     }
     void Start()
     {
@@ -29,5 +33,19 @@ public class UIController : MonoBehaviour
         this.hud.UpdateMaxStatusBar(status);
 
         this.hud.UpdateStatusBar(status);
+    }
+
+    private void OnDisable()
+    {
+        PetController.OnChangedStatus -= this.UpdateHud;
+        EventClickController.OnChangedButtonStatus -= this.UpdateButtonActiveStatus;
+    }
+
+    public void UpdateButtonActiveStatus(bool active)
+    {
+        foreach(GameObject button in UIButtons)
+        {
+            button.SetActive(active);
+        }
     }
 }

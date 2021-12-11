@@ -10,9 +10,12 @@ public class KitchenController : MonoBehaviour
     [SerializeField]
     private BasketController basket;
 
+    private bool enabled;
+
     void Start()
     {
-        
+        this.enabled = false;
+        EventClickController.OnNotifiedKitchen += EnableBasket;
     }
     
     void Update()
@@ -25,6 +28,16 @@ public class KitchenController : MonoBehaviour
 
     public void EnableBasket()
     {
-        this.basket.Enable(items);
+        if(!enabled)
+        {
+            this.basket.Enable(items);
+            this.enabled = true;
+        }
+        else
+        {
+            this.basket.Disable();
+            this.enabled = false;
+        }
+        
     }
 }

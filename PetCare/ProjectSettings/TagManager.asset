@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - UIButton
   - Water
   - UI
-  - 
-  - 
+  - Pet
+  - Item
   - 
   - 
   - 

@@ -19,30 +19,31 @@ public class BasketController : MonoBehaviour, IActivate
     private Ray myRay;
     private RaycastHit hit;
 
+    private int layer_Mask;
+
     void Start()
     {
-        
+        this.layer_Mask = LayerMask.GetMask("Item");
     }
 
     void Update()
     {
         this.myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(myRay, out hit))
-        {
-            Debug.DrawRay(myRay.origin, myRay.direction * 100, Color.blue, 100f);
-
-            Debug.Log("entered in mouse button");
-
-            Debug.Log(hit.transform.name);
-            if (hit.collider != null)
+        if (Physics.Raycast(myRay, out hit, 50, this.layer_Mask))
+        {      
+            if(Input.GetMouseButtonDown(0))
             {
-
-            }
+                if (hit.collider != null)
+                {
+                    Debug.Log(hit.transform.name);
+                    Debug.DrawRay(myRay.origin, myRay.direction * 20, Color.blue, 50f);
+                }
+            }     
         }
     }
 
-    public void populateBasket()
+    public void InitiateBasketData()
     {
         spawItems = new Dictionary<int, GameObject>();
 
@@ -70,12 +71,19 @@ public class BasketController : MonoBehaviour, IActivate
     {
         this.Activate();
 
-        this.populateBasket();
-        this.InitializeBasket(items);
+        this.InitiateBasketData();
+        this.SpawnBasketItems(items);
+    }
+
+    public void Disable()
+    {
+        this.Deactivate();
+
+        resetMaterial();
     }
 
 
-    public void InitializeBasket(Item[] items)
+    public void SpawnBasketItems(Item[] items)
     {
         for (int i = 0; i < items.Length; i++)
         {
@@ -99,16 +107,12 @@ public class BasketController : MonoBehaviour, IActivate
 
     }
 
-    public void OnDisable()
-    {
-        resetItemMaterial();
-    }
-
-    public void resetItemMaterial()
+    public void resetMaterial()
     {
         foreach (GameObject obj in content)
         {
             obj.GetComponent<Renderer>().sharedMaterial = this.originalMaterial;
-        }
+            obj.GetComponent<BoxCollider>().enabled = true;
+        }      
     }
 }

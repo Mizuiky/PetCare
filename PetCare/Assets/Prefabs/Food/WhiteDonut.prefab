@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4454382041392262933}
   - component: {fileID: 4423259182244254037}
   - component: {fileID: 5645518639895704768}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: WhiteDonut
   m_TagString: Untagged
   m_Icon: {fileID: 0}

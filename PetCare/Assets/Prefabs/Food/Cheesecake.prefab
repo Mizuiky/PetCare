@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8631163757437892563}
   - component: {fileID: 8610570002101843101}
   - component: {fileID: 2974539421400544406}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cheesecake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ BoxCollider:
   m_GameObject: {fileID: 8619622568505366239}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.20007558, y: 0.19912761, z: 0.32372907}
   m_Center: {x: -0.00000007823109, y: 0.10008767, z: 0.04052531}
