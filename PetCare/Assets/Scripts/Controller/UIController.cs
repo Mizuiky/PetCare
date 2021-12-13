@@ -41,10 +41,14 @@ public class UIController : MonoBehaviour
         EventClickController.OnChangedButtonStatus -= this.UpdateButtonActiveStatus;
     }
 
-    public void UpdateButtonActiveStatus(bool active)
+    public void UpdateButtonActiveStatus()
     {
+        bool active = false;
+
         foreach(GameObject button in UIButtons)
-        {
+        {      
+            active = button.activeInHierarchy ? false : true;
+            
             button.SetActive(active);
         }
     }

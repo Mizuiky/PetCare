@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Item : IItem
+public class ItemData : IItem
 {
     [SerializeField]
     BasketItems item;
 
     [SerializeField]
-    private int qtd;     
+    private int qtd;
 
-    public int Id
+    [SerializeField]
+    private int id;
+
+    public string Name
     {
         get
         {
-            return (int)this.item;
+            return this.item.ToString();
         }
     }
 
@@ -26,4 +29,13 @@ public class Item : IItem
             return this.qtd;
         }
     }
+
+    public int ID
+    {
+        get
+        {
+            return this.id;
+        }
+    }
 }
+

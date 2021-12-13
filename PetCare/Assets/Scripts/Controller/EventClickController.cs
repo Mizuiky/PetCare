@@ -11,7 +11,7 @@ public class EventClickController : MonoBehaviour
     public delegate void NotifyKitchen();
     public static event NotifyKitchen OnNotifiedKitchen;
 
-    public delegate void ChangeButtonStatus(bool active);
+    public delegate void ChangeButtonStatus();
     public static event ChangeButtonStatus OnChangedButtonStatus;
 
     #region Scene Events
@@ -50,15 +50,22 @@ public class EventClickController : MonoBehaviour
 
     public void OpenKitchen()
     {
-        if(OnChangedButtonStatus != null)
-        {
-            OnChangedButtonStatus(false);
-        }
-
         if(OnNotifiedKitchen != null)
         {
             OnNotifiedKitchen();
         }
     }
+    #endregion
+
+    #region UI Notification
+
+    public void NotifyUI()
+    {
+        if (OnChangedButtonStatus != null)
+        {
+            OnChangedButtonStatus();
+        }
+    }
+
     #endregion
 }

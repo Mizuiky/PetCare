@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BasketController : MonoBehaviour, IActivate
@@ -14,7 +15,10 @@ public class BasketController : MonoBehaviour, IActivate
     [SerializeField]
     private Material originalMaterial;
 
-    private Dictionary<int, GameObject> spawItems;
+    [SerializeField]
+    private Transform[] itemsPlace;
+
+    private Dictionary<int, GameObject> spawnItems;
 
     private Ray myRay;
     private RaycastHit hit;
@@ -43,19 +47,32 @@ public class BasketController : MonoBehaviour, IActivate
         }
     }
 
-    public void InitiateBasketData()
+    public void InitiateBasketData(ItemData[] items)
     {
-        spawItems = new Dictionary<int, GameObject>();
+        this.spawnItems  = new Dictionary<int, GameObject>();
 
-        var myEnum = Enum.GetValues(typeof(BasketItems));
-
-        for (int i = 0; i < myEnum.Length; i++)
+        for (int i = 0; i < items.Length; i++)
         {
-            var enumItem = (int)myEnum.GetValue(i);
+            var item = Array.Find(this.content, content => content.name.Contains(items[i].Name));
 
-            spawItems.Add(enumItem, this.content[i]);
+            if(item != null)
+            {
+                this.spawnItems.Add(items[i].ID, item);
+            }   
         }
     }
+
+    /*public List<string> getItemList(ItemData[] items)
+    {
+        var itemList = new List<string>();
+
+        foreach(ItemData item in items)
+        {
+            itemList.Add(item.Name);
+        }
+
+        return itemList;
+    }*/
 
     public void Activate()
     {
@@ -67,11 +84,12 @@ public class BasketController : MonoBehaviour, IActivate
         this.gameObject.SetActive(false);
     }
 
-    public void Enable(Item[] items)
+    public void Enable(ItemData[] items)
     {
         this.Activate();
 
-        this.InitiateBasketData();
+        this.resetMaterial();
+        this.InitiateBasketData(items);
         this.SpawnBasketItems(items);
     }
 
@@ -80,31 +98,50 @@ public class BasketController : MonoBehaviour, IActivate
         this.Deactivate();
 
         resetMaterial();
+
+        DespawnBasketItems();
     }
 
-
-    public void SpawnBasketItems(Item[] items)
+    public void SpawnBasketItems(ItemData[] items)
     {
-        for (int i = 0; i < items.Length; i++)
-        {
-            GameObject itemToSpaw = this.spawItems[items[i].Id];
-            this.originalMaterial = itemToSpaw.GetComponent<Renderer>().sharedMaterial;
+        List<int> keys = this.spawnItems.Keys.ToList();
 
-            if (itemToSpaw != null)
+        for(int i = 0; i < keys.Count; i++)
+        {
+            var key = keys[i];
+            var itemData = Array.Find(items, x => x.ID == key);
+
+            var clone = Instantiate(this.spawnItems[key], this.itemsPlace[i].position, this.spawnItems[key].transform.rotation, this.itemsPlace[i]);
+            
+            if (itemData.Qtd <= 0)
             {
-                if (items[i].Qtd <= 0)
-                {
-                    itemToSpaw.GetComponent<BoxCollider>().enabled = false;
-                    itemToSpaw.GetComponent<Renderer>().sharedMaterial = this.emptyContent;
-                }
-     
-                Instantiate(itemToSpaw);
+                clone.GetComponent<BoxCollider>().enabled = false;
+                clone.GetComponent<Renderer>().sharedMaterial = this.emptyContent;
             }
+            
+            clone.AddComponent(typeof(Candie));
+
+            var candy = clone.GetComponent<Candie>();
+
+            if (candy != null)
+            {
+                candy.InitializeCandie(key);
+            }      
         }
 
         //a partir dos dados enviados da cozinha podemos selecionar qual dos itens estarão presentes na cesta, 
         //se houver items com qtd 0 vamos desabilitar o collider dele para que nao seja possivel seleciona-lo alem de mudar sua cor para mais opaco
+    }
 
+    public void DespawnBasketItems()
+    {
+        var allBasktItems = this.gameObject.GetComponentsInChildren<ItemData>();
+
+        for (int i = 0; i < allBasktItems.Length; i++)
+        {
+            
+        
+        }
     }
 
     public void resetMaterial()

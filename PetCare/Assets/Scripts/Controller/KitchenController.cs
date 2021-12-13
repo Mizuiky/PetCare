@@ -5,38 +5,34 @@ using UnityEngine;
 public class KitchenController : MonoBehaviour
 { 
     [SerializeField]
-    private Item[] items;
+    private ItemData[] items;
 
     [SerializeField]
     private BasketController basket;
 
-    private bool enabled;
-
     void Start()
     {
-        this.enabled = false;
+        this.basket.gameObject.SetActive(false);
+
         EventClickController.OnNotifiedKitchen += EnableBasket;
     }
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            this.EnableBasket();
-        }
+       
     }
 
     public void EnableBasket()
     {
-        if(!enabled)
+        if(this.enabled)
         {
             this.basket.Enable(items);
-            this.enabled = true;
+            this.enabled = false;
         }
         else
         {
             this.basket.Disable();
-            this.enabled = false;
+            this.enabled = true;
         }
         
     }
