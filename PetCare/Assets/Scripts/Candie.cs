@@ -40,6 +40,8 @@ public class Candie : MonoBehaviour, IActivate
     public void InitializeCandie(int id)
     {
         this.ID = id;
+   
+
     }
 
 

@@ -99,7 +99,7 @@ public class BasketController : MonoBehaviour, IActivate
 
         resetMaterial();
 
-        DespawnBasketItems();
+        //DespawnBasketItems();
     }
 
     public void SpawnBasketItems(ItemData[] items)
@@ -111,12 +111,12 @@ public class BasketController : MonoBehaviour, IActivate
             var key = keys[i];
             var itemData = Array.Find(items, x => x.ID == key);
 
-            var clone = Instantiate(this.spawnItems[key], this.itemsPlace[i].position, this.spawnItems[key].transform.rotation, this.itemsPlace[i]);
-            
+            var clone = Instantiate(this.spawnItems[key], itemsPlace[i], false);
+
             if (itemData.Qtd <= 0)
             {
-                clone.GetComponent<BoxCollider>().enabled = false;
-                clone.GetComponent<Renderer>().sharedMaterial = this.emptyContent;
+                clone.GetComponentInChildren<BoxCollider>().enabled = false;
+                clone.GetComponentInChildren<Renderer>().sharedMaterial = this.emptyContent;
             }
             
             clone.AddComponent(typeof(Candie));
@@ -135,21 +135,15 @@ public class BasketController : MonoBehaviour, IActivate
 
     public void DespawnBasketItems()
     {
-        var allBasktItems = this.gameObject.GetComponentsInChildren<ItemData>();
-
-        for (int i = 0; i < allBasktItems.Length; i++)
-        {
-            
         
-        }
     }
 
     public void resetMaterial()
     {
         foreach (GameObject obj in content)
         {
-            obj.GetComponent<Renderer>().sharedMaterial = this.originalMaterial;
-            obj.GetComponent<BoxCollider>().enabled = true;
+            obj.GetComponentInChildren<Renderer>().sharedMaterial = this.originalMaterial;
+            obj.GetComponentInChildren<BoxCollider>().enabled = true;
         }      
     }
 }

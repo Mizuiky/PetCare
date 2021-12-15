@@ -6,7 +6,7 @@ public enum BasketItems
 {
     CupCake = 0,
     Cookie = 1,
-    Donuts = 2,
-    WhiteDonuts = 3,
-    Cake = 4
+    Donut = 2,
+    WhiteDonut = 3,
+    ChocolateCake = 4
 }
