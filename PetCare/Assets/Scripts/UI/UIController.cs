@@ -43,6 +43,7 @@ public class UIController : MonoBehaviour
 
     public void UpdateButtonActiveStatus()
     {
+        Debug.Log("test 1");
         bool active = false;
 
         foreach(GameObject button in UIButtons)

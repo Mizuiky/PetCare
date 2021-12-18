@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1467128023125498242}
+  - component: {fileID: 5083931824792635554}
   m_Layer: 7
   m_Name: WhiteDonut
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &5083931824792635554
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6679024931249495842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.09873473, z: 0.2927999}
+  m_Center: {x: 0, y: 0.049468774, z: 0.000000007450582}
 --- !u!1001 &8375351716287156770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112,26 +126,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 716eb86c5f9a24921a13fd6bcaa16cb1, type: 3}
---- !u!1 &8375351716287124610 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 716eb86c5f9a24921a13fd6bcaa16cb1, type: 3}
-  m_PrefabInstance: {fileID: 8375351716287156770}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8375351716287547554 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 716eb86c5f9a24921a13fd6bcaa16cb1, type: 3}
   m_PrefabInstance: {fileID: 8375351716287156770}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &3156347035087790387
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8375351716287124610}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.09873473, z: 0.2927999}
-  m_Center: {x: 0, y: 0.049468774, z: 0.000000007450582}

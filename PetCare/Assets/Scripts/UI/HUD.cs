@@ -17,7 +17,7 @@ public class HUD : MonoBehaviour
     public void UpdateStatusBar(PetStatus status)
     {
         this.hungrySlider.value = status.hungry;
-        this.playSlider.value = status.happiness;            
+        this.playSlider.value = status.happiness;
     }
 
     public void UpdateMaxStatusBar(PetStatus status)

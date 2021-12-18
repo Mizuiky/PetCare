@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9178543285158036357}
+  - component: {fileID: 6209741579183984171}
   m_Layer: 7
   m_Name: Donut
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &6209741579183984171
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9178543285158036358}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.10058642, z: 0.2927999}
+  m_Center: {x: 0, y: 0.050946873, z: 0.000000007450582}
 --- !u!1001 &9178543284792953301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104,26 +118,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc74e53f7f0b5495b9e760dd4803accb, type: 3}
---- !u!1 &9178543284792856437 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: dc74e53f7f0b5495b9e760dd4803accb, type: 3}
-  m_PrefabInstance: {fileID: 9178543284792953301}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9178543284793348949 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: dc74e53f7f0b5495b9e760dd4803accb, type: 3}
   m_PrefabInstance: {fileID: 9178543284792953301}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &9178543284792953298
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9178543284792856437}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.10058642, z: 0.2927999}
-  m_Center: {x: 0, y: 0.050946873, z: 0.000000007450582}

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4698079976719845991}
+  - component: {fileID: 2586954042036857812}
   m_Layer: 7
   m_Name: Cookie
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &2586954042036857812
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6648698037353021578}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19843578, y: 0.024284128, z: 0.18872373}
+  m_Center: {x: 0, y: 0.012224022, z: -0.000000007450582}
 --- !u!1001 &5097808783698026175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,26 +114,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18e651e9430dc49f8aba22d0b7b80602, type: 3}
---- !u!1 &5097808783697926175 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 18e651e9430dc49f8aba22d0b7b80602, type: 3}
-  m_PrefabInstance: {fileID: 5097808783698026175}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5097808783697626175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 18e651e9430dc49f8aba22d0b7b80602, type: 3}
   m_PrefabInstance: {fileID: 5097808783698026175}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1234546427972380689
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5097808783697926175}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.19843578, y: 0.024284128, z: 0.18872373}
-  m_Center: {x: 0, y: 0.012224022, z: -0.000000007450582}

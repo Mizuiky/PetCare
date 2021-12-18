@@ -28,6 +28,10 @@ public class ItemData : IItem
         {
             return this.qtd;
         }
+        set
+        {
+            this.qtd = value;
+        }
     }
 
     public int ID

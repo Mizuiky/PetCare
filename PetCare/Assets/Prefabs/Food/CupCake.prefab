@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4176826932527792514}
+  - component: {fileID: 7340787305657089208}
   m_Layer: 7
   m_Name: CupCake
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7340787305657089208
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4176826932527792515}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19980368, y: 0.22599004, z: 0.20779856}
+  m_Center: {x: 0, y: 0.11383086, z: 0}
 --- !u!1001 &4176826933124858191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112,26 +126,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 406287137d7714d64bf9b8529da1ed2c, type: 3}
---- !u!1 &4176826933124827119 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 406287137d7714d64bf9b8529da1ed2c, type: 3}
-  m_PrefabInstance: {fileID: 4176826933124858191}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4176826933125258191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 406287137d7714d64bf9b8529da1ed2c, type: 3}
   m_PrefabInstance: {fileID: 4176826933124858191}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &5990125264833771746
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4176826933124827119}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.19980368, y: 0.22599004, z: 0.20779856}
-  m_Center: {x: 0, y: 0.11383086, z: 0}

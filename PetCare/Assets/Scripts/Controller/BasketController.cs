@@ -6,24 +6,34 @@ using UnityEngine;
 
 public class BasketController : MonoBehaviour, IActivate
 {
+    #region Private Fields
+
     [SerializeField]
     private GameObject[] content;
 
     [SerializeField]
-    private Material emptyContent;
-
-    [SerializeField]
-    private Material originalMaterial;
+    private Material[] itemMaterial;
 
     [SerializeField]
     private Transform[] itemsPlace;
 
-    private Dictionary<int, GameObject> spawnItems;
+    private List<ItemData> basketDataList;
 
-    private Ray myRay;
+    private Dictionary<int, GameObject> itensToSpawn;
+
+    private Ray rayPosition;
     private RaycastHit hit;
 
     private int layer_Mask;
+
+    #endregion
+
+    #region Events
+
+    public delegate void OnNotifyItemUpdate();
+    public static event OnNotifyItemUpdate OnNotifiedItemQuantityUpdate;
+
+    #endregion
 
     void Start()
     {
@@ -32,33 +42,74 @@ public class BasketController : MonoBehaviour, IActivate
 
     void Update()
     {
-        this.myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        this.rayPosition = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(myRay, out hit, 50, this.layer_Mask))
+        if (Physics.Raycast(rayPosition, out hit, 50, this.layer_Mask))
         {      
             if(Input.GetMouseButtonDown(0))
             {
                 if (hit.collider != null)
                 {
                     Debug.Log(hit.transform.name);
-                    Debug.DrawRay(myRay.origin, myRay.direction * 20, Color.blue, 50f);
+                    Debug.DrawRay(rayPosition.origin, rayPosition.direction * 20, Color.blue, 50f);
+
+                    var sweet = hit.collider.GetComponent<Candy>();
+
+                    if (sweet != null)
+                    {
+                        UpdateItemQuantity(sweet);
+                    }           
                 }
             }     
         }
     }
 
-    public void InitiateBasketData(ItemData[] items)
+    void OnDisable()
     {
-        this.spawnItems  = new Dictionary<int, GameObject>();
+        
+    }
 
-        for (int i = 0; i < items.Length; i++)
+
+    public void InitiateBasketData(List<ItemData> items)
+    {
+        this.itensToSpawn  = new Dictionary<int, GameObject>();
+
+        //this will receive the reference from the list in the kitchen.
+        this.basketDataList = new List<ItemData>(items);
+
+        for (int i = 0; i < items.Count; i++)
         {
             var item = Array.Find(this.content, content => content.name.Contains(items[i].Name));
 
             if(item != null)
             {
-                this.spawnItems.Add(items[i].ID, item);
+                this.itensToSpawn.Add(items[i].ID, item);
             }   
+        }
+    }
+
+    public void UpdateItemQuantity(Candy item)
+    {
+        foreach(ItemData data in this.basketDataList)
+        {
+            if(data.ID == item.ID)
+            {
+                if(data.Qtd > 0)
+                {
+                    data.Qtd -= 1;
+
+                    if(data.Qtd == 0)
+                    {
+                        item.ChangeMaterial(false);
+                    }
+                }           
+           
+                //will tell the player that a updated in the health was done
+                if (OnNotifiedItemQuantityUpdate != null)
+                {              
+                    //OnNotifiedItemQuantityUpdate();
+                }       
+            }
         }
     }
 
@@ -84,53 +135,50 @@ public class BasketController : MonoBehaviour, IActivate
         this.gameObject.SetActive(false);
     }
 
-    public void Enable(ItemData[] items)
+    public void Enable(List<ItemData> items)
     {
         this.Activate();
 
-        this.resetMaterial();
+        this.ResetMaterial();
         this.InitiateBasketData(items);
-        this.SpawnBasketItems(items);
+        this.SpawnBasketItems();
     }
 
     public void Disable()
     {
         this.Deactivate();
 
-        resetMaterial();
+        ResetMaterial();
 
         //DespawnBasketItems();
     }
 
-    public void SpawnBasketItems(ItemData[] items)
+    public void SpawnBasketItems()
     {
-        List<int> keys = this.spawnItems.Keys.ToList();
+        List<int> keys = this.itensToSpawn.Keys.ToList();
 
         for(int i = 0; i < keys.Count; i++)
         {
             var key = keys[i];
-            var itemData = Array.Find(items, x => x.ID == key);
 
-            var clone = Instantiate(this.spawnItems[key], itemsPlace[i], false);
+            var itemData = basketDataList.Find(x => x.ID == key);
 
-            if (itemData.Qtd <= 0)
-            {
-                clone.GetComponentInChildren<BoxCollider>().enabled = false;
-                clone.GetComponentInChildren<Renderer>().sharedMaterial = this.emptyContent;
-            }
+            var clone = Instantiate(this.itensToSpawn[key], itemsPlace[i], false);
             
-            clone.AddComponent(typeof(Candie));
+            clone.AddComponent(typeof(Candy));
 
-            var candy = clone.GetComponent<Candie>();
+            var candy = clone.GetComponent<Candy>();
 
             if (candy != null)
             {
-                candy.InitializeCandie(key);
+                candy.InitializeCandy(itemData.ID, this.itemMaterial);
+              
+                if (itemData.Qtd <= 0)
+                {
+                    candy.ChangeMaterial(false);
+                }        
             }      
-        }
-
-        //a partir dos dados enviados da cozinha podemos selecionar qual dos itens estarão presentes na cesta, 
-        //se houver items com qtd 0 vamos desabilitar o collider dele para que nao seja possivel seleciona-lo alem de mudar sua cor para mais opaco
+        }     
     }
 
     public void DespawnBasketItems()
@@ -138,12 +186,11 @@ public class BasketController : MonoBehaviour, IActivate
         
     }
 
-    public void resetMaterial()
+    public void ResetMaterial()
     {
         foreach (GameObject obj in content)
         {
-            obj.GetComponentInChildren<Renderer>().sharedMaterial = this.originalMaterial;
-            obj.GetComponentInChildren<BoxCollider>().enabled = true;
+            obj.GetComponentInChildren<Renderer>().sharedMaterial = this.itemMaterial[0];
         }      
     }
 }
