@@ -41,6 +41,9 @@ public class PetController : MonoBehaviour, IActivate
     public delegate void OnChangeStatus (PetStatus status);
     public static event OnChangeStatus OnChangedStatus;
 
+    public delegate void OnNotifyHungryUpdate(bool canConsume);
+    public static event OnNotifyHungryUpdate OnNotifyUpdatedHungry;
+
     #endregion
 
     public void Activate()
@@ -50,6 +53,12 @@ public class PetController : MonoBehaviour, IActivate
 
     public void Deactivate()
     {
+        TimerController.OnDecreasedStatus -= DecreaseStatus;
+
+        BasketController.OnNotifyItemQuantityDecreased -= IncreaseHungry;
+
+        EventClickController.OnPlayerRotated -= RotatePlayer;
+
         this.gameObject.SetActive(false);
     }
 
@@ -64,7 +73,9 @@ public class PetController : MonoBehaviour, IActivate
             OnChangedStatus(this.status);
         }
         
-        TimerController.OnDecreasedStatus += ModifyStatus;
+        TimerController.OnDecreasedStatus += DecreaseStatus;
+
+        BasketController.OnNotifyItemQuantityDecreased += IncreaseHungry;
 
         EventClickController.OnPlayerRotated += RotatePlayer;
 
@@ -78,47 +89,87 @@ public class PetController : MonoBehaviour, IActivate
     }
     void OnDisable()
     {
-        TimerController.OnDecreasedStatus -= ModifyStatus;
-
-        EventClickController.OnPlayerRotated -= RotatePlayer;
         this.Deactivate();
     }
 
     private void SetInitialStatus()
     {
+        Debug.Log("setting initial status");
+
         this.status.maxHungry = this.maxHungry;
         this.status.maxHappiness = this.maxHappiness;
 
         this.status.hungry = this.initialHungry;
         this.status.happiness = this.initialHappiness;
+
+        CheckCanConsumeItem();
     }
 
-    private void ModifyStatus()
+    private void DecreaseStatus()
     {
-        this.DecreaseStatus(this.amount);
+        this.DecreaseHungry();
+
+        this.DecreaseHappiness();
 
         if (OnChangedStatus != null)
         {
             OnChangedStatus(this.status);
         }
+
+        CheckCanConsumeItem();
     }
 
-    private void IncreaseStatus(int amount)
+    private void DecreaseHungry()
     {
-        this.status.hungry += amount;
-        this.status.happiness += amount;
-        
-        this.status.hungry = Mathf.Min(this.maxHungry, this.status.hungry);
-        this.status.happiness = Mathf.Min(this.maxHappiness, this.status.happiness);
-    }
-
-    private void DecreaseStatus(int amount)
-    {
-        this.status.hungry -= amount;
-        this.status.happiness -= amount;
-
+        this.status.hungry -= this.amount;
         this.status.hungry = Mathf.Max(0, this.status.hungry);
+    }
+    private void DecreaseHappiness()
+    {
+        this.status.happiness -= this.amount;
         this.status.happiness = Mathf.Max(0, this.status.happiness);
+    }
+
+    private void IncreaseHungry(int amount)
+    {
+        Debug.Log("trying to increase");
+        if (CheckCanConsumeItem())    
+        {
+            this.status.hungry += amount;
+            this.status.hungry = Mathf.Min(this.maxHungry, this.status.hungry);
+
+            Debug.Log("increased hungry");
+
+            if (OnChangedStatus != null)
+            {
+                OnChangedStatus(this.status);
+            }
+        }     
+    }
+
+    private bool CheckCanConsumeItem()
+    {
+        Debug.Log("check full hungry");
+        var canConsume = true;
+
+        if (this.status.hungry == this.maxHungry)
+        {
+            Debug.Log("is full hungry");
+            canConsume = false;
+        }
+
+        if(OnNotifyUpdatedHungry != null)
+        {
+            OnNotifyUpdatedHungry(canConsume);
+        }
+       
+        return canConsume;      
+    }
+
+    private void IncreaseHappiness(int amount)
+    {
+        this.status.happiness += this.amount;
+        this.status.happiness = Mathf.Min(this.maxHappiness, this.status.happiness);
     }
 
     #region Player Rotation

@@ -26,18 +26,22 @@ public class BasketController : MonoBehaviour, IActivate
 
     private int layer_Mask;
 
+    private bool canConsumeItem;
+
     #endregion
 
     #region Events
 
-    public delegate void OnNotifyItemUpdate();
-    public static event OnNotifyItemUpdate OnNotifiedItemQuantityUpdate;
+    public delegate void OnNotifyDecreaseItemQuantity(int amount);
+    public static event OnNotifyDecreaseItemQuantity OnNotifyItemQuantityDecreased;
 
     #endregion
 
     void Start()
     {
         this.layer_Mask = LayerMask.GetMask("Item");
+
+        PetController.OnNotifyUpdatedHungry += CheckCanConsumeItem;
     }
 
     void Update()
@@ -57,18 +61,13 @@ public class BasketController : MonoBehaviour, IActivate
 
                     if (sweet != null)
                     {
+                        Debug.Log("clicking on the sweet");
                         UpdateItemQuantity(sweet);
                     }           
                 }
             }     
         }
     }
-
-    void OnDisable()
-    {
-        
-    }
-
 
     public void InitiateBasketData(List<ItemData> items)
     {
@@ -94,21 +93,23 @@ public class BasketController : MonoBehaviour, IActivate
         {
             if(data.ID == item.ID)
             {
-                if(data.Qtd > 0)
+                if(data.Qtd > 0 && this.canConsumeItem)
                 {
+                    Debug.Log("Pet is not full health presseg with qtd--");
                     data.Qtd -= 1;
 
-                    if(data.Qtd == 0)
+                    if (data.Qtd == 0)
                     {
                         item.ChangeMaterial(false);
                     }
-                }           
-           
-                //will tell the player that a updated in the health was done
-                if (OnNotifiedItemQuantityUpdate != null)
-                {              
-                    //OnNotifiedItemQuantityUpdate();
-                }       
+
+                    //will tell the player that an updated in the health was done
+                    if (OnNotifyItemQuantityDecreased != null)
+                    {
+                        Debug.Log("Message to the player");
+                        OnNotifyItemQuantityDecreased(data.Amount);
+                    }
+                }                
             }
         }
     }
@@ -124,6 +125,11 @@ public class BasketController : MonoBehaviour, IActivate
 
         return itemList;
     }*/
+
+    public void CheckCanConsumeItem(bool canConsume)
+    {
+        this.canConsumeItem = canConsume;
+    }
 
     public void Activate()
     {
@@ -171,7 +177,7 @@ public class BasketController : MonoBehaviour, IActivate
 
             if (candy != null)
             {
-                candy.InitializeCandy(itemData.ID, this.itemMaterial);
+                candy.InitializeCandy(itemData.ID, itemData.Amount, this.itemMaterial);
               
                 if (itemData.Qtd <= 0)
                 {

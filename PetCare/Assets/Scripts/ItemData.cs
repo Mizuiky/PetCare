@@ -14,6 +14,9 @@ public class ItemData : IItem
     [SerializeField]
     private int id;
 
+    [SerializeField]
+    private int hungryAmount;
+
     public string Name
     {
         get
@@ -39,6 +42,14 @@ public class ItemData : IItem
         get
         {
             return this.id;
+        }
+    }
+
+    public int Amount
+    {
+        get
+        {
+            return this.hungryAmount;
         }
     }
 }

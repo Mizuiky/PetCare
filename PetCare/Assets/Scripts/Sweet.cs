@@ -4,6 +4,8 @@ public class Candy : MonoBehaviour, IActivate
 { 
     private int id;
 
+    private int amountToHeal;
+
     private Material[] sweetMaterial;
 
     private bool canBeSelected;
@@ -25,6 +27,18 @@ public class Candy : MonoBehaviour, IActivate
         }
     }
 
+    public int Amount
+    {
+        get
+        {
+            return this.amountToHeal;
+        }
+        set
+        {
+            this.amountToHeal = value;
+        }
+    }
+
     public void Activate()
     {
         this.gameObject.SetActive(true);
@@ -40,9 +54,11 @@ public class Candy : MonoBehaviour, IActivate
         
     }
 
-    public void InitializeCandy(int id, Material[] sweetMaterial)
+    public void InitializeCandy(int id, int amountToHeal, Material[] sweetMaterial)
     {
         this.ID = id;
+        this.Amount = amountToHeal;
+
 
         this.sweetMaterial = sweetMaterial;
 
