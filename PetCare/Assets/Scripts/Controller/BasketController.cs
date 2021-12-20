@@ -89,7 +89,8 @@ public class BasketController : MonoBehaviour, IActivate
 
     public void UpdateItemQuantity(Candy item)
     {
-        foreach(ItemData data in this.basketDataList)
+        Debug.Log($"updatequantity  canconsume= {this.canConsumeItem}");
+        foreach (ItemData data in this.basketDataList)
         {
             if(data.ID == item.ID)
             {
@@ -128,6 +129,7 @@ public class BasketController : MonoBehaviour, IActivate
 
     public void CheckCanConsumeItem(bool canConsume)
     {
+        Debug.Log($"message received  canconsume= {canConsume}");
         this.canConsumeItem = canConsume;
     }
 

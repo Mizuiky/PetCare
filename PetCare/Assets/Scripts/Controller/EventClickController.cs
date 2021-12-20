@@ -14,6 +14,12 @@ public class EventClickController : MonoBehaviour
     public delegate void ChangeButtonStatus();
     public static event ChangeButtonStatus OnChangedButtonStatus;
 
+    public delegate void OnChangeStatus(PetStatus status);
+    public static event OnChangeStatus OnChangedStatus;
+
+    public delegate void OnNotifyHungryUpdate(bool canConsume);
+    public static event OnNotifyHungryUpdate OnNotifyUpdatedHungry;
+
     #region Scene Events
 
     public void ChangeScene(string currentlyScene)
