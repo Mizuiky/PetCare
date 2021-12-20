@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TimerController : MonoBehaviour
 {
-    public delegate void DecreaseStatus();
-    public static DecreaseStatus OnDecreasedStatus;
+    public delegate void OnDecreaseStatus();
+    public static OnDecreaseStatus OnStatusDecreased;
 
     [SerializeField]
     private float timeToDecreaseStatus;
@@ -13,12 +13,6 @@ public class TimerController : MonoBehaviour
     void Start()
     {
         StartCoroutine(Timer());
-    }
-
-    
-    void Update()
-    {
-        
     }
 
     private IEnumerator Timer()
@@ -30,7 +24,7 @@ public class TimerController : MonoBehaviour
         {
             yield return new WaitForSeconds(this.timeToDecreaseStatus);
             //Debug.Log("Time to decrease");
-            OnDecreasedStatus();
+            OnStatusDecreased();
         }     
     }
 }

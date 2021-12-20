@@ -53,7 +53,7 @@ public class PetController : MonoBehaviour, IActivate
 
     public void Deactivate()
     {
-        TimerController.OnDecreasedStatus -= DecreaseStatus;
+        TimerController.OnStatusDecreased -= DecreaseStatus;
 
         BasketController.OnNotifyItemQuantityDecreased -= IncreaseHungry;
 
@@ -73,7 +73,7 @@ public class PetController : MonoBehaviour, IActivate
             OnChangedStatus(this.status);
         }
         
-        TimerController.OnDecreasedStatus += DecreaseStatus;
+        TimerController.OnStatusDecreased += DecreaseStatus;
 
         BasketController.OnNotifyItemQuantityDecreased += IncreaseHungry;
 
@@ -175,12 +175,14 @@ public class PetController : MonoBehaviour, IActivate
     #region Player Rotation
     public void RotatePlayer(bool rightSide)
     {
-        if (!rightSide)
+        if (rightSide)
         {
-            this.transform.Rotate(- new Vector3(0, rotationAmount, 0));
+            this.transform.Rotate(-new Vector3(0, rotationAmount, 0));    
+            Debug.Log("rotate right");
         }
         else
         {
+            Debug.Log("rotate left");
             this.transform.Rotate(new Vector3(0, rotationAmount, 0));
         } 
     }
