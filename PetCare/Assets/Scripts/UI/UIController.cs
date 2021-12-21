@@ -12,8 +12,8 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
-        PetController.OnChangedStatus += this.UpdateHud;
-        EventClickController.OnChangedButtonStatus += this.UpdateButtonActiveStatus;
+        PetController.onChangeStatus += this.UpdateHud;
+        EventClickController.onChangeButtonStatus += this.UpdateButtonActiveStatus;
     }
     void Start()
     {
@@ -37,8 +37,8 @@ public class UIController : MonoBehaviour
 
     private void OnDisable()
     {
-        PetController.OnChangedStatus -= this.UpdateHud;
-        EventClickController.OnChangedButtonStatus -= this.UpdateButtonActiveStatus;
+        PetController.onChangeStatus -= this.UpdateHud;
+        EventClickController.onChangeButtonStatus -= this.UpdateButtonActiveStatus;
     }
 
     public void UpdateButtonActiveStatus()

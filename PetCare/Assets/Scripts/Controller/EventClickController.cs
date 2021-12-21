@@ -5,20 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class EventClickController : MonoBehaviour
 {
-    public delegate void PlayerRotation (bool rotateToRight);
-    public static event PlayerRotation OnPlayerRotated;
+    public delegate void OnPlayerRotation (bool rotateToRight);
+    public static event OnPlayerRotation onPlayerRotation;
 
-    public delegate void NotifyKitchen();
-    public static event NotifyKitchen OnNotifiedKitchen;
+    public delegate void OnNotifyKitchen();
+    public static event OnNotifyKitchen onNotifyKitchen;
 
-    public delegate void ChangeButtonStatus();
-    public static event ChangeButtonStatus OnChangedButtonStatus;
+    public delegate void OnChangeButtonStatus();
+    public static event OnChangeButtonStatus onChangeButtonStatus;
 
     public delegate void OnChangeStatus(PetStatus status);
-    public static event OnChangeStatus OnChangedStatus;
+    public static event OnChangeStatus onChangeStatus;
 
-    public delegate void OnNotifyHungryUpdate(bool canConsume);
-    public static event OnNotifyHungryUpdate OnNotifyUpdatedHungry;
+    public delegate void OnHungryUpdate(bool canConsume);
+    public static event OnHungryUpdate onHungryUpdate;
 
     #region Scene Events
 
@@ -43,10 +43,10 @@ public class EventClickController : MonoBehaviour
     {
         Debug.Log("start apply rotation event");
 
-        if(OnPlayerRotated != null)
+        if(onPlayerRotation != null)
         {
             Debug.Log("!= null");
-            OnPlayerRotated(rotateToRight);
+            onPlayerRotation(rotateToRight);
         }  
     }
 
@@ -56,9 +56,12 @@ public class EventClickController : MonoBehaviour
 
     public void OpenKitchen()
     {
-        if(OnNotifiedKitchen != null)
+        Debug.Log("Open Kitchen");
+
+        if (onNotifyKitchen != null)
         {
-            OnNotifiedKitchen();
+            Debug.Log("Open Kitchen != null");
+            onNotifyKitchen();
         }
     }
     #endregion
@@ -67,9 +70,9 @@ public class EventClickController : MonoBehaviour
 
     public void NotifyUI()
     {
-        if (OnChangedButtonStatus != null)
+        if (onChangeButtonStatus != null)
         {
-            OnChangedButtonStatus();
+            onChangeButtonStatus();
         }
     }
 

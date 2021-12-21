@@ -59,6 +59,7 @@ MonoBehaviour:
     id: 2
     hungryAmount: 3
   basket: {fileID: 8668436225814484215}
+  KitchenStruture: {fileID: 9143695689158543380}
 --- !u!1 &7029690613742325909
 GameObject:
   m_ObjectHideFlags: 0

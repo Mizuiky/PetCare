@@ -10,35 +10,70 @@ public class KitchenController : MonoBehaviour, IActivate
     [SerializeField]
     private BasketController basket;
 
+    [SerializeField]
+    private GameObject KitchenStruture;
+
+    public static bool petCanConsumeItem;
+
+    private bool kitchenEnabled;
+
     void Start()
     {
-        EventClickController.OnNotifiedKitchen += EnableBasket;
-        basket.Deactivate();
+        this.Activate();
     }
 
     public void EnableBasket()
     {
-        if(this.enabled)
+        if(this.kitchenEnabled)
         {
+            this.KitchenStruture.SetActive(true);
+
             this.basket.Enable(kitchenItems);
-            this.enabled = false;
+
+            this.kitchenEnabled = false;
         }
         else
         {
+            this.KitchenStruture.SetActive(false);
+
             this.basket.Disable();
-            this.enabled = true;
+            this.kitchenEnabled = true;
         }     
     }
 
     public void Activate()
     {
-        
+        this.kitchenEnabled = true;
+
+        PetController.onHungryUpdate += CheckCanConsumeItem;
+
+        EventClickController.onNotifyKitchen += EnableBasket;
+
+        basket.Deactivate();
+    }
+
+    
+    private void OnDisable()
+    {
+        Deactivate();
     }
 
     public void Deactivate()
     {
-        EventClickController.OnNotifiedKitchen -= EnableBasket;
+        this.kitchenEnabled = false;
+
+        PetController.onHungryUpdate -= CheckCanConsumeItem;
+
+        EventClickController.onNotifyKitchen -= EnableBasket;
+
+        this.KitchenStruture.SetActive(false);
+        this.basket.gameObject.SetActive(false);
     }
 
+    public void CheckCanConsumeItem(bool canConsume)
+    {
+        Debug.Log($"message received  canconsume= {canConsume}");
+        petCanConsumeItem = canConsume;
+    }
     //kitchen get the list from another server that will open and cloe json and serialize it!
 }

@@ -10,11 +10,6 @@ public class Candy : MonoBehaviour, IActivate
 
     private bool canBeSelected;
 
-    private void Awake()
-    {
-        this.Deactivate();
-    }
-
     public int ID
     {
         get
@@ -49,22 +44,15 @@ public class Candy : MonoBehaviour, IActivate
         this.gameObject.SetActive(false);
     }
 
-    public void OnDestroy()
-    {
-        
-    }
-
     public void InitializeCandy(int id, int amountToHeal, Material[] sweetMaterial)
     {
         this.ID = id;
         this.Amount = amountToHeal;
 
-
         this.sweetMaterial = sweetMaterial;
 
-        this.enabled = true;
-
         this.Activate();
+
     }
 
     public void ChangeMaterial(bool enabled)

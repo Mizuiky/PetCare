@@ -26,22 +26,18 @@ public class BasketController : MonoBehaviour, IActivate
 
     private int layer_Mask;
 
-    private bool canConsumeItem;
-
     #endregion
 
     #region Events
 
-    public delegate void OnNotifyDecreaseItemQuantity(int amount);
-    public static event OnNotifyDecreaseItemQuantity OnNotifyItemQuantityDecreased;
+    public delegate void OnDecreaseItemQuantity(int amount);
+    public static event OnDecreaseItemQuantity onDecreaseItemQuantity;
 
     #endregion
 
     void Start()
     {
         this.layer_Mask = LayerMask.GetMask("Item");
-
-        PetController.OnNotifyUpdatedHungry += CheckCanConsumeItem;
     }
 
     void Update()
@@ -89,12 +85,13 @@ public class BasketController : MonoBehaviour, IActivate
 
     public void UpdateItemQuantity(Candy item)
     {
-        Debug.Log($"updatequantity  canconsume= {this.canConsumeItem}");
+        Debug.Log($"updatequantity  canconsume= {KitchenController.petCanConsumeItem}");
+
         foreach (ItemData data in this.basketDataList)
         {
             if(data.ID == item.ID)
             {
-                if(data.Qtd > 0 && this.canConsumeItem)
+                if(data.Qtd > 0 && KitchenController.petCanConsumeItem)
                 {
                     Debug.Log("Pet is not full health presseg with qtd--");
                     data.Qtd -= 1;
@@ -105,10 +102,10 @@ public class BasketController : MonoBehaviour, IActivate
                     }
 
                     //will tell the player that an updated in the health was done
-                    if (OnNotifyItemQuantityDecreased != null)
+                    if (onDecreaseItemQuantity != null)
                     {
                         Debug.Log("Message to the player");
-                        OnNotifyItemQuantityDecreased(data.Amount);
+                        onDecreaseItemQuantity(data.Amount);
                     }
                 }                
             }
@@ -127,38 +124,38 @@ public class BasketController : MonoBehaviour, IActivate
         return itemList;
     }*/
 
-    public void CheckCanConsumeItem(bool canConsume)
-    {
-        Debug.Log($"message received  canconsume= {canConsume}");
-        this.canConsumeItem = canConsume;
-    }
-
     public void Activate()
     {
         this.gameObject.SetActive(true);
     }
 
-    public void Deactivate()
-    {
-        this.gameObject.SetActive(false);
-    }
-
     public void Enable(List<ItemData> items)
     {
-        this.Activate();
-
         this.ResetMaterial();
         this.InitiateBasketData(items);
         this.SpawnBasketItems();
+
+        this.Activate();
+    }
+    private void OnDisable()
+    {
+        this.Disable();
+
+        
     }
 
     public void Disable()
     {
         this.Deactivate();
 
+        //DespawnBasketItems();
+    }
+
+    public void Deactivate()
+    {
         ResetMaterial();
 
-        //DespawnBasketItems();
+        this.gameObject.SetActive(false);
     }
 
     public void SpawnBasketItems()

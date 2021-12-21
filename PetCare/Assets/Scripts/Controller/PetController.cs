@@ -39,10 +39,10 @@ public class PetController : MonoBehaviour, IActivate
     #region Events
 
     public delegate void OnChangeStatus (PetStatus status);
-    public static event OnChangeStatus OnChangedStatus;
+    public static event OnChangeStatus onChangeStatus;
 
-    public delegate void OnNotifyHungryUpdate(bool canConsume);
-    public static event OnNotifyHungryUpdate OnNotifyUpdatedHungry;
+    public delegate void OnHungryUpdate(bool canConsume);
+    public static event OnHungryUpdate onHungryUpdate;
 
     #endregion
 
@@ -53,11 +53,11 @@ public class PetController : MonoBehaviour, IActivate
 
     public void Deactivate()
     {
-        TimerController.OnStatusDecreased -= DecreaseStatus;
+        TimerController.onDecreaseStatus -= DecreaseStatus;
 
-        BasketController.OnNotifyItemQuantityDecreased -= IncreaseHungry;
+        BasketController.onDecreaseItemQuantity -= IncreaseHungry;
 
-        EventClickController.OnPlayerRotated -= RotatePlayer;
+        EventClickController.onPlayerRotation -= RotatePlayer;
 
         this.gameObject.SetActive(false);
     }
@@ -67,21 +67,21 @@ public class PetController : MonoBehaviour, IActivate
         this.status = new PetStatus();
         this.SetInitialStatus();
 
-        if(OnChangedStatus != null)
+        if(onChangeStatus != null)
         {
             //Debug.Log("start to change status");
-            OnChangedStatus(this.status);
+            onChangeStatus(this.status);
         }
 
         this.Activate();
 
         CheckCanConsumeItem();
 
-        TimerController.OnStatusDecreased += DecreaseStatus;
+        TimerController.onDecreaseStatus += DecreaseStatus;
 
-        BasketController.OnNotifyItemQuantityDecreased += IncreaseHungry;
+        BasketController.onDecreaseItemQuantity += IncreaseHungry;
 
-        EventClickController.OnPlayerRotated += RotatePlayer;
+        EventClickController.onPlayerRotation += RotatePlayer;
     }
 
     // Update is called once per frame
@@ -111,9 +111,9 @@ public class PetController : MonoBehaviour, IActivate
 
         this.DecreaseHappiness();
 
-        if (OnChangedStatus != null)
+        if (onChangeStatus != null)
         {
-            OnChangedStatus(this.status);
+            onChangeStatus(this.status);
         }
 
         CheckCanConsumeItem();
@@ -140,9 +140,11 @@ public class PetController : MonoBehaviour, IActivate
 
             Debug.Log("increased hungry");
 
-            if (OnChangedStatus != null)
+            CheckCanConsumeItem();
+
+            if (onChangeStatus != null)
             {
-                OnChangedStatus(this.status);
+                onChangeStatus(this.status);
             }
         }     
     }
@@ -158,10 +160,10 @@ public class PetController : MonoBehaviour, IActivate
             canConsume = false;
         }
 
-        if(OnNotifyUpdatedHungry != null)
+        if(onHungryUpdate != null)
         {
             Debug.Log("notify update");
-            OnNotifyUpdatedHungry(canConsume);
+            onHungryUpdate(canConsume);
         }
        
         return canConsume;      

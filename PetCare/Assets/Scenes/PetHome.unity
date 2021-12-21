@@ -281,7 +281,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 137.6, y: 0, z: 0}
---- !u!1001 &1660589387
+--- !u!1001 &1144916184
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -290,7 +290,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1252498137783593120, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1608559754911114909, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
       propertyPath: m_RootOrder
@@ -340,9 +340,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kitchen
       objectReference: {fileID: 0}
-    - target: {fileID: 5282833306777254028, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
+    - target: {fileID: 9143695689158543380, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
@@ -627,7 +627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8995937513165059650, guid: 5e2326e883e94454cb5e6ef6d8868ba1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8995937513165059708, guid: 5e2326e883e94454cb5e6ef6d8868ba1, type: 3}
       propertyPath: m_RootOrder
@@ -696,11 +696,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5696489853150540942, guid: 20c2ca421a4d83044adcfc7fc7bfe4a8, type: 3}
       propertyPath: initialHungry
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5696489853150540942, guid: 20c2ca421a4d83044adcfc7fc7bfe4a8, type: 3}
       propertyPath: initialHappiness
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7698743927321481256, guid: 20c2ca421a4d83044adcfc7fc7bfe4a8, type: 3}
       propertyPath: m_Name
@@ -765,7 +765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7753634799927017530, guid: a2ab7d7c90535f944ad3b42f3ebf6847, type: 3}
       propertyPath: timeToDecreaseStatus
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7753634799927017531, guid: a2ab7d7c90535f944ad3b42f3ebf6847, type: 3}
       propertyPath: m_RootOrder
