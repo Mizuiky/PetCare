@@ -13,9 +13,9 @@ public class KitchenController : MonoBehaviour, IActivate
     [SerializeField]
     private GameObject KitchenStruture;
 
-    public static bool petCanConsumeItem;
-
     private bool kitchenEnabled;
+
+    public static bool petCanConsumeItem;
 
     void Start()
     {
@@ -75,5 +75,6 @@ public class KitchenController : MonoBehaviour, IActivate
         Debug.Log($"message received  canconsume= {canConsume}");
         petCanConsumeItem = canConsume;
     }
-    //kitchen get the list from another server that will open and cloe json and serialize it!
+
+    //kitchen get the list from another server that will open and close json and serialize it!
 }

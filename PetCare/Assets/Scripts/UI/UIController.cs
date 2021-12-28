@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public class UIController : MonoBehaviour, IActivate
 {
     [SerializeField]
     private HUD hud;
@@ -10,19 +11,22 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private GameObject[] UIButtons;
 
-    private void Awake()
-    {
-        PetController.onChangeStatus += this.UpdateHud;
-        EventClickController.onChangeButtonStatus += this.UpdateButtonActiveStatus;
-    }
+    [SerializeField]
+    private GameObject basketQuantity;
+
+    private List<Transform> itemQuantityText;
+
     void Start()
     {
-        
+        this.Activate();
     }
-    
-    void Update()
+    public void Activate()
     {
-        
+        this.GetChildrenTextComponent();
+
+        PetController.onChangeStatus += UpdateHud;
+        EventClickController.onChangeButtonStatus += UpdateButtonActiveStatus;
+        BasketController.onQuantityTextUpdate += UpdateQuantityTextField;
     }
 
     private void UpdateHud(PetStatus status)
@@ -37,8 +41,14 @@ public class UIController : MonoBehaviour
 
     private void OnDisable()
     {
+        this.Deactivate();
+    }
+
+    public void Deactivate()
+    {
         PetController.onChangeStatus -= this.UpdateHud;
         EventClickController.onChangeButtonStatus -= this.UpdateButtonActiveStatus;
+        BasketController.onQuantityTextUpdate -= UpdateQuantityTextField;
     }
 
     public void UpdateButtonActiveStatus()
@@ -52,5 +62,52 @@ public class UIController : MonoBehaviour
             
             button.SetActive(active);
         }
+    }
+
+    public void UpdateQuantityTextField(List<ItemData> items)
+    {
+        Text currentText;
+
+        if(!this.basketQuantity.gameObject.activeInHierarchy)
+        {
+            this.basketQuantity.SetActive(true);
+        }
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            currentText = this.itemQuantityText[i].GetComponentInChildren<Text>();
+            currentText.text = items[i].Qtd.ToString();
+            this.itemQuantityText[i].gameObject.SetActive(true);
+        }      
+    }
+
+    private void GetChildrenTextComponent()
+    {
+        var textComponents = this.basketQuantity.GetComponentsInChildren<Transform>();
+
+        this.itemQuantityText = new List<Transform>();
+
+        if(textComponents != null)
+        {
+            foreach (Transform text in textComponents)
+            {
+                if(text.gameObject.CompareTag("Qtd"))
+                {
+                    this.itemQuantityText.Add(text);
+                }               
+            }
+        }
+
+        this.SetTextVisibility(false);
+    }
+
+    private void SetTextVisibility(bool visible)
+    {     
+       this.itemQuantityText.ForEach(x => x.gameObject.SetActive(visible));
+    }
+
+    private void CleanTextList()
+    {
+        this.itemQuantityText.Clear();
     }
 }

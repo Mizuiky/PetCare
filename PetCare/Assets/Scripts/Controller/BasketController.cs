@@ -33,6 +33,9 @@ public class BasketController : MonoBehaviour, IActivate
     public delegate void OnDecreaseItemQuantity(int amount);
     public static event OnDecreaseItemQuantity onDecreaseItemQuantity;
 
+    public delegate void OnQuantityTextUpdate(List<ItemData> item);
+    public static event OnQuantityTextUpdate onQuantityTextUpdate;
+
     #endregion
 
     void Start()
@@ -81,6 +84,11 @@ public class BasketController : MonoBehaviour, IActivate
                 this.itensToSpawn.Add(items[i].ID, item);
             }   
         }
+
+        if(onQuantityTextUpdate != null)
+        {
+            onQuantityTextUpdate(this.basketDataList);
+        }
     }
 
     public void UpdateItemQuantity(Candy item)
@@ -99,6 +107,11 @@ public class BasketController : MonoBehaviour, IActivate
                     if (data.Qtd == 0)
                     {
                         item.ChangeMaterial(false);
+                    }
+
+                    if (onQuantityTextUpdate != null)
+                    {
+                        onQuantityTextUpdate(this.basketDataList);
                     }
 
                     //will tell the player that an updated in the health was done
