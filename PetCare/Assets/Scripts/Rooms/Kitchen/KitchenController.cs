@@ -49,7 +49,7 @@ namespace PetCare
 
             PetController.onHungryUpdate += CheckCanConsumeItem;
 
-            EventhHandlerController.onNotifyKitchen += EnableBasket;
+            EventController.onNotifyKitchen += EnableBasket;
 
             basket.Deactivate();
         }
@@ -66,7 +66,7 @@ namespace PetCare
 
             PetController.onHungryUpdate -= CheckCanConsumeItem;
 
-            EventhHandlerController.onNotifyKitchen -= EnableBasket;
+            EventController.onNotifyKitchen -= EnableBasket;
 
             this.KitchenStruture.SetActive(false);
             this.basket.gameObject.SetActive(false);

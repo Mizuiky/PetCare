@@ -16,13 +16,13 @@ namespace PetCare
 
         #endregion
 
-        public void UpdateStatusBar(PetStatus status)
+        public void UpdateStatusBar(PetData status)
         {
             this.hungrySlider.value = status.hungry;
             this.playSlider.value = status.happiness;
         }
 
-        public void UpdateMaxStatusBar(PetStatus status)
+        public void UpdateMaxStatusBar(PetData status)
         {
             this.hungrySlider.maxValue = status.maxHungry;
             this.playSlider.maxValue = status.maxHappiness;

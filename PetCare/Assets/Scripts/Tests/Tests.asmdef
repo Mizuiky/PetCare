@@ -4,10 +4,7 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "Pet",
-        "Scripts",
-        "Event",
-        "Kitchen"
+        "Scripts"
     ],
     "includePlatforms": [
         "Editor"

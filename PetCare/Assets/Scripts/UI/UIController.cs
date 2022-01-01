@@ -27,11 +27,11 @@ namespace PetCare
             this.GetChildrenTextComponent();
 
             PetController.onChangeStatus += UpdateHud;
-            EventClickController.onChangeButtonStatus += UpdateButtonActiveStatus;
+            EventController.onChangeButtonStatus += UpdateButtonActiveStatus;
             BasketController.onQuantityTextUpdate += UpdateQuantityTextField;
         }
 
-        private void UpdateHud(PetStatus status)
+        private void UpdateHud(PetData status)
         {
             //Debug.Log("updateHUD");
 
@@ -49,7 +49,7 @@ namespace PetCare
         public void Deactivate()
         {
             PetController.onChangeStatus -= this.UpdateHud;
-            EventClickController.onChangeButtonStatus -= this.UpdateButtonActiveStatus;
+            EventController.onChangeButtonStatus -= this.UpdateButtonActiveStatus;
             BasketController.onQuantityTextUpdate -= UpdateQuantityTextField;
         }
 
@@ -113,5 +113,4 @@ namespace PetCare
             this.itemQuantityText.Clear();
         }
     }
-
 }
