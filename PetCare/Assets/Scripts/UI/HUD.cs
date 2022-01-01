@@ -3,27 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HUD : MonoBehaviour
+namespace PetCare
 {
-    #region private Fields
-
-    [SerializeField]
-    private Slider hungrySlider;
-    [SerializeField]
-    private Slider playSlider;
-
-    #endregion
-
-    public void UpdateStatusBar(PetStatus status)
+    public class HUD : MonoBehaviour
     {
-        this.hungrySlider.value = status.hungry;
-        this.playSlider.value = status.happiness;
-    }
+        #region private Fields
 
-    public void UpdateMaxStatusBar(PetStatus status)
-    {
-        this.hungrySlider.maxValue = status.maxHungry;
-        this.playSlider.maxValue = status.maxHappiness;
-    }
+        [SerializeField]
+        private Slider hungrySlider;
+        [SerializeField]
+        private Slider playSlider;
 
+        #endregion
+
+        public void UpdateStatusBar(PetStatus status)
+        {
+            this.hungrySlider.value = status.hungry;
+            this.playSlider.value = status.happiness;
+        }
+
+        public void UpdateMaxStatusBar(PetStatus status)
+        {
+            this.hungrySlider.maxValue = status.maxHungry;
+            this.playSlider.maxValue = status.maxHappiness;
+        }
+
+    }
 }

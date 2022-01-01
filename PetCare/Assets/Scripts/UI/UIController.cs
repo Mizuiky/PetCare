@@ -3,111 +3,115 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour, IActivate
+namespace PetCare
 {
-    [SerializeField]
-    private HUD hud;
-
-    [SerializeField]
-    private GameObject[] UIButtons;
-
-    [SerializeField]
-    private GameObject basketQuantity;
-
-    private List<Transform> itemQuantityText;
-
-    void Start()
+    public class UIController : MonoBehaviour, IActivate
     {
-        this.Activate();
-    }
-    public void Activate()
-    {
-        this.GetChildrenTextComponent();
+        [SerializeField]
+        private HUD hud;
 
-        PetController.onChangeStatus += UpdateHud;
-        EventClickController.onChangeButtonStatus += UpdateButtonActiveStatus;
-        BasketController.onQuantityTextUpdate += UpdateQuantityTextField;
-    }
+        [SerializeField]
+        private GameObject[] UIButtons;
 
-    private void UpdateHud(PetStatus status)
-    {
-        //Debug.Log("updateHUD");
+        [SerializeField]
+        private GameObject basketQuantity;
 
-        //update this when player gain level on happiness and hungry, create an initial method to set the initial max status
-        this.hud.UpdateMaxStatusBar(status);
+        private List<Transform> itemQuantityText;
 
-        this.hud.UpdateStatusBar(status);
-    }
-
-    private void OnDisable()
-    {
-        this.Deactivate();
-    }
-
-    public void Deactivate()
-    {
-        PetController.onChangeStatus -= this.UpdateHud;
-        EventClickController.onChangeButtonStatus -= this.UpdateButtonActiveStatus;
-        BasketController.onQuantityTextUpdate -= UpdateQuantityTextField;
-    }
-
-    public void UpdateButtonActiveStatus()
-    {
-        Debug.Log("test 1");
-        bool active = false;
-
-        foreach(GameObject button in UIButtons)
-        {      
-            active = button.activeInHierarchy ? false : true;
-            
-            button.SetActive(active);
-        }
-    }
-
-    public void UpdateQuantityTextField(List<ItemData> items)
-    {
-        Text currentText;
-
-        if(!this.basketQuantity.gameObject.activeInHierarchy)
+        void Start()
         {
-            this.basketQuantity.SetActive(true);
+            this.Activate();
+        }
+        public void Activate()
+        {
+            this.GetChildrenTextComponent();
+
+            PetController.onChangeStatus += UpdateHud;
+            EventClickController.onChangeButtonStatus += UpdateButtonActiveStatus;
+            BasketController.onQuantityTextUpdate += UpdateQuantityTextField;
         }
 
-        for (int i = 0; i < items.Count; i++)
+        private void UpdateHud(PetStatus status)
         {
-            currentText = this.itemQuantityText[i].GetComponentInChildren<Text>();
-            currentText.text = items[i].Qtd.ToString();
-            this.itemQuantityText[i].gameObject.SetActive(true);
-        }      
-    }
+            //Debug.Log("updateHUD");
 
-    private void GetChildrenTextComponent()
-    {
-        var textComponents = this.basketQuantity.GetComponentsInChildren<Transform>();
+            //update this when player gain level on happiness and hungry, create an initial method to set the initial max status
+            this.hud.UpdateMaxStatusBar(status);
 
-        this.itemQuantityText = new List<Transform>();
+            this.hud.UpdateStatusBar(status);
+        }
 
-        if(textComponents != null)
+        private void OnDisable()
         {
-            foreach (Transform text in textComponents)
+            this.Deactivate();
+        }
+
+        public void Deactivate()
+        {
+            PetController.onChangeStatus -= this.UpdateHud;
+            EventClickController.onChangeButtonStatus -= this.UpdateButtonActiveStatus;
+            BasketController.onQuantityTextUpdate -= UpdateQuantityTextField;
+        }
+
+        public void UpdateButtonActiveStatus()
+        {
+            Debug.Log("test 1");
+            bool active = false;
+
+            foreach (GameObject button in UIButtons)
             {
-                if(text.gameObject.CompareTag("Qtd"))
-                {
-                    this.itemQuantityText.Add(text);
-                }               
+                active = button.activeInHierarchy ? false : true;
+
+                button.SetActive(active);
             }
         }
 
-        this.SetTextVisibility(false);
+        public void UpdateQuantityTextField(List<ItemData> items)
+        {
+            Text currentText;
+
+            if (!this.basketQuantity.gameObject.activeInHierarchy)
+            {
+                this.basketQuantity.SetActive(true);
+            }
+
+            for (int i = 0; i < items.Count; i++)
+            {
+                currentText = this.itemQuantityText[i].GetComponentInChildren<Text>();
+                currentText.text = items[i].Qtd.ToString();
+                this.itemQuantityText[i].gameObject.SetActive(true);
+            }
+        }
+
+        private void GetChildrenTextComponent()
+        {
+            var textComponents = this.basketQuantity.GetComponentsInChildren<Transform>();
+
+            this.itemQuantityText = new List<Transform>();
+
+            if (textComponents != null)
+            {
+                foreach (Transform text in textComponents)
+                {
+                    if (text.gameObject.CompareTag("Qtd"))
+                    {
+                        this.itemQuantityText.Add(text);
+                    }
+                }
+            }
+
+            this.SetTextVisibility(false);
+        }
+
+        private void SetTextVisibility(bool visible)
+        {
+            this.itemQuantityText.ForEach(x => x.gameObject.SetActive(visible));
+        }
+
+        private void CleanTextList()
+        {
+            this.itemQuantityText.Clear();
+        }
     }
 
-    private void SetTextVisibility(bool visible)
-    {     
-       this.itemQuantityText.ForEach(x => x.gameObject.SetActive(visible));
-    }
-
-    private void CleanTextList()
-    {
-        this.itemQuantityText.Clear();
-    }
 }

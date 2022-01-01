@@ -342,7 +342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8024135891610703253, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
       propertyPath: kitchenItems.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8024135891610703253, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
       propertyPath: kitchenItems.Array.data[3].id
@@ -350,15 +350,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8024135891610703253, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
       propertyPath: kitchenItems.Array.data[0].qtd
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8024135891610703253, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
-      propertyPath: kitchenItems.Array.data[1].qtd
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8024135891610703253, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
-      propertyPath: kitchenItems.Array.data[2].qtd
+      propertyPath: kitchenItems.Array.data[1].qtd
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024135891610703253, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
+      propertyPath: kitchenItems.Array.data[2].qtd
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8024135891610703253, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
       propertyPath: kitchenItems.Array.data[3].qtd
@@ -370,11 +370,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8024135891610703253, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
       propertyPath: kitchenItems.Array.data[1].item
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8024135891610703253, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
       propertyPath: kitchenItems.Array.data[2].item
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8024135891610703253, guid: a2d5aaa43301ce746858ac244fe2a575, type: 3}
       propertyPath: kitchenItems.Array.data[3].item
