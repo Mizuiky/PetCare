@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace PetCare
 {
-    public class Pet : IPet
+    public class Pet : MonoBehaviour, IPet
     {
         #region Private Fields
 
         private float rotationAmount;
 
-        private PetData status;
+        private PetData data;
 
         private int amountToDecrease;
         #endregion
@@ -27,15 +27,15 @@ namespace PetCare
             }
         }
 
-        public PetData Status
+        public PetData Data
         {
             get
             {
-                return status;
+                return this.data;
             }
             set
             {
-                this.status = value;
+                this.data = value;
             }
         }
 
@@ -49,40 +49,46 @@ namespace PetCare
         {
             Debug.Log("setting initial status");
 
-            this.status.maxHungry = status.maxHungry;
-            this.status.maxHappiness = status.maxHappiness;
+            this.data.maxHungry = status.maxHungry;
+            this.data.maxHappiness = status.maxHappiness;
 
-            this.status.hungry = status.initialHungry;
-            this.status.happiness = status.initialHappiness;
+            this.data.hungry = status.initialHungry;
+            this.data.happiness = status.initialHappiness;
         }
 
         public void UpdateStatus(PetData status)
         {
             Debug.Log("updating status");
 
-            this.status.maxHungry = status.maxHungry;
-            this.status.maxHappiness = status.maxHappiness;
+            this.data.maxHungry = status.maxHungry;
+            this.data.maxHappiness = status.maxHappiness;
 
-            this.status.hungry = status.hungry;
-            this.status.happiness = status.happiness;
+            this.data.hungry = status.hungry;
+            this.data.happiness = status.happiness;
         }
 
         public void DecreaseHungry()
         {
-            this.status.hungry -= amountToDecrease;
-            this.status.hungry = Mathf.Max(0, this.status.hungry);
+            this.data.hungry -= amountToDecrease;
+            this.data.hungry = Mathf.Max(0, this.data.hungry);
         }
 
         public void DecreaseHappiness()
         {
-            this.status.happiness -= amountToDecrease;
-            this.status.happiness = Mathf.Max(0, this.status.happiness);
+            this.data.happiness -= amountToDecrease;
+            this.data.happiness = Mathf.Max(0, this.data.happiness);
         }
 
         public void IncreaseHappiness(int amount)
         {
-            this.status.happiness += amount;
-            this.status.happiness = Mathf.Min(this.status.maxHappiness, this.status.happiness);
+            this.data.happiness += amount;
+            this.data.happiness = Mathf.Min(this.data.maxHappiness, this.data.happiness);
+        }
+
+        public void IncreaseHungry(int amount)
+        {
+            this.data.hungry += amount;
+            this.data.hungry = Mathf.Min(this.data.maxHungry, this.data.hungry);
         }
 
         #region Pet Rotation
@@ -99,7 +105,6 @@ namespace PetCare
                 this.transform.Rotate(new Vector3(0, this.rotationAmount, 0));
             }
         }
-
         #endregion
     }
 }

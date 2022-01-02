@@ -13,7 +13,7 @@ public class PetControllerTests
     {
         IPet pet = Substitute.For<IPet>();
 
-        pet.Status = new PetStatus()
+        pet.Data = new PetData()
         {
             hungry = 3
         };
@@ -22,7 +22,7 @@ public class PetControllerTests
 
         pet.DecreaseHungry();
 
-        Assert.IsFalse(pet.Status.hungry < 0);
+        Assert.IsFalse(pet.Data.hungry < 0);
     }
 }
 

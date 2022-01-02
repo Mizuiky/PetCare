@@ -8,7 +8,7 @@ namespace PetCare
     {
         public int Amount { get; set; }
 
-        public PetData Status { get; set; }
+        public PetData Data { get; set; }
 
         void SetInitialStatus(PetData status);
 
@@ -19,6 +19,8 @@ namespace PetCare
         void DecreaseHappiness();
 
         void IncreaseHappiness(int amount);
+
+        void IncreaseHungry(int amount);
     }
 }
 

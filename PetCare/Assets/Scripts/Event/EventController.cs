@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace PetCare
 {
-    public class EventController
+    public class EventController: MonoBehaviour
     {
         public delegate void OnPlayerRotation(bool rotateToRight);
         public static event OnPlayerRotation onPlayerRotation;

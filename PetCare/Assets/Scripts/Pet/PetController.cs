@@ -4,11 +4,17 @@ using UnityEngine;
 
 namespace PetCare
 {
-    public class PetController : MonoBehaviour, IActivate
+    public class PetController : MonoBehaviour
     {
         private Pet pet;
 
         private int amountToUpdate;
+
+        [SerializeField]
+        private Transform petLocation;
+
+        [SerializeField]
+        private Pet[] pets;
 
         #region Events
 
@@ -20,9 +26,25 @@ namespace PetCare
 
         #endregion
 
-        public void Activate()
+        void Start()
         {
-            this.gameObject.SetActive(true);
+            InstantiatePet();
+
+            //pegar o component pet na cena;
+
+            if (onChangeStatus != null)
+            {
+                Debug.Log("start to change status");
+                onChangeStatus(this.pet.Data);
+            }
+
+            CheckCanConsumeItem();
+
+            TimerController.onDecreaseStatus += DecreaseStatus;
+
+            BasketController.onDecreaseItemQuantity += IncreaseHungry;
+
+            EventController.onPlayerRotation += this.pet.Rotate;
         }
 
         public void Deactivate()
@@ -36,35 +58,19 @@ namespace PetCare
             this.gameObject.SetActive(false);
         }
 
-        void Start()
-        {
-            this.pet = GetComponent<Pet>();
-
-            //pegar o component pet na cena;
-
-            if (onChangeStatus != null)
-            {
-                //Debug.Log("start to change status");
-                onChangeStatus(this.pet.Status);
-            }
-
-            this.Activate();
-
-            CheckCanConsumeItem();
-
-            TimerController.onDecreaseStatus += DecreaseStatus;
-
-            BasketController.onDecreaseItemQuantity += IncreaseHungry;
-
-            EventController.onPlayerRotation += this.pet.Rotate;
-        }
-
         void OnDisable()
         {
             this.Deactivate();
         }
 
-        public void DecreaseStatus()
+        private void InstantiatePet()
+        {
+            this.pet = Instantiate(pets[0], this.petLocation);
+
+            var data = LoadPetData.loadData();
+        }
+
+        private void DecreaseStatus()
         {
             this.pet.DecreaseHungry();
 
@@ -72,22 +78,18 @@ namespace PetCare
 
             if (onChangeStatus != null)
             {
-                onChangeStatus(this.pet.Status);
+                onChangeStatus(this.pet.Data);
             }
 
             CheckCanConsumeItem();
         }
-
-       
-
 
         public void IncreaseHungry(int amount)
         {
             Debug.Log("trying to increase");
             if (CheckCanConsumeItem())
             {
-                this.status.hungry += amount;
-                this.status.hungry = Mathf.Min(this.maxHungry, this.status.hungry);
+                this.pet.IncreaseHungry(amount);
 
                 Debug.Log("increased hungry");
 
@@ -95,7 +97,7 @@ namespace PetCare
 
                 if (onChangeStatus != null)
                 {
-                    onChangeStatus(this.status);
+                    onChangeStatus(this.pet.Data);
                 }
             }
         }
@@ -105,7 +107,7 @@ namespace PetCare
             Debug.Log("check full hungry");
             var canConsume = true;
 
-            if (this.status.hungry == this.maxHungry)
+            if (this.pet.Data.hungry == this.pet.Data.maxHungry)
             {
                 Debug.Log("is full hungry");
                 canConsume = false;
@@ -118,8 +120,7 @@ namespace PetCare
             }
 
             return canConsume;
-        }
-     
+        }    
     }
 }
 

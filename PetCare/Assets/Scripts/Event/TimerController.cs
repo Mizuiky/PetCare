@@ -26,7 +26,11 @@ namespace PetCare
             {
                 yield return new WaitForSeconds(this.timeToDecreaseStatus);
                 //Debug.Log("Time to decrease");
-                onDecreaseStatus();
+                
+                if(onDecreaseStatus != null)
+                {
+                    onDecreaseStatus();
+                }          
             }
         }
     }
