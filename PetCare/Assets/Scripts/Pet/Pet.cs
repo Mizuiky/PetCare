@@ -8,12 +8,24 @@ namespace PetCare
     {
         #region Private Fields
 
-        private float rotationAmount;
+        private int rotationAmount;
 
         private PetData data;
 
-        private int amountToDecrease;
+        private int amountToDecrease = 2;
         #endregion
+
+        public int RotateAmount
+        {
+            get
+            {
+                return this.rotationAmount;
+            }
+            set
+            {
+                this.rotationAmount = value;
+            }
+        }
 
         public int Amount
         {
@@ -37,23 +49,20 @@ namespace PetCare
             {
                 this.data = value;
             }
-        }
+        } 
 
-
-        public Pet(PetData status)
-        {
-            this.SetInitialStatus(status);
-        }
-
-        public void SetInitialStatus(PetData status)
+        public void SetInitialData(PetData newData)
         {
             Debug.Log("setting initial status");
+            this.data = new PetData();
+;
+            this.data.maxHungry = newData.maxHungry;
+            this.data.maxHappiness = newData.maxHappiness;
 
-            this.data.maxHungry = status.maxHungry;
-            this.data.maxHappiness = status.maxHappiness;
+            this.data.hungry = newData.initialHungry;
+            this.data.happiness = newData.initialHappiness;
 
-            this.data.hungry = status.initialHungry;
-            this.data.happiness = status.initialHappiness;
+            Debug.Log("initial status setted");
         }
 
         public void UpdateStatus(PetData status)
@@ -90,22 +99,6 @@ namespace PetCare
             this.data.hungry += amount;
             this.data.hungry = Mathf.Min(this.data.maxHungry, this.data.hungry);
         }
-
-        #region Pet Rotation
-        public void Rotate(bool rightSide)
-        {
-            if (rightSide)
-            {
-                this.transform.Rotate(-new Vector3(0, this.rotationAmount, 0));
-                Debug.Log("rotate right");
-            }
-            else
-            {
-                Debug.Log("rotate left");
-                this.transform.Rotate(new Vector3(0, this.rotationAmount, 0));
-            }
-        }
-        #endregion
     }
 }
 

@@ -18,7 +18,7 @@ namespace PetCare
 
         private List<Transform> itemQuantityText;
 
-        void Start()
+        void Awake()
         {
             this.Activate();
         }

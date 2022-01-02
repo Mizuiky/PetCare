@@ -7,23 +7,37 @@ namespace PetCare
     [System.Serializable]
     public class ItemData : IItem
     {
-        [SerializeField]
-        BasketItems item;
+        private BasketItems item;
 
-        [SerializeField]
+        private string name;
+
         private int qtd;
 
-        [SerializeField]
         private int id;
 
-        [SerializeField]
         private int hungryAmount;
+
+        public BasketItems Item
+        {
+            get
+            {
+                return this.item;
+            }
+            set
+            {
+                this.item = value;
+            }
+        }
 
         public string Name
         {
             get
             {
-                return this.item.ToString();
+                return this.name;
+            }
+            set
+            {
+                this.name = value;
             }
         }
 
@@ -45,6 +59,10 @@ namespace PetCare
             {
                 return this.id;
             }
+            set
+            {
+                this.id = value;
+            }
         }
 
         public int Amount
@@ -52,6 +70,10 @@ namespace PetCare
             get
             {
                 return this.hungryAmount;
+            }
+            set
+            {
+                this.hungryAmount = value;
             }
         }
     }

@@ -6,11 +6,11 @@ namespace PetCare
 {
     public interface IPet
     {
+        public int RotateAmount { get; set; }
         public int Amount { get; set; }
-
         public PetData Data { get; set; }
 
-        void SetInitialStatus(PetData status);
+        void SetInitialData(PetData status);
 
         void UpdateStatus(PetData status);
 

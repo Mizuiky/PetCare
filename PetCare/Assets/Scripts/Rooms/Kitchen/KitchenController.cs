@@ -19,7 +19,7 @@ namespace PetCare
 
         public static bool petCanConsumeItem;
 
-        void Start()
+        void Awake()
         {
             this.Activate();
         }
@@ -29,6 +29,8 @@ namespace PetCare
             if (this.kitchenEnabled)
             {
                 this.KitchenStruture.SetActive(true);
+
+                this.kitchenItems = LoadData.LoadKitchenItems();
 
                 this.basket.Enable(kitchenItems);
 
@@ -46,6 +48,8 @@ namespace PetCare
         public void Activate()
         {
             this.kitchenEnabled = true;
+
+            this.kitchenItems = new List<ItemData>();
 
             PetController.onHungryUpdate += CheckCanConsumeItem;
 
@@ -76,9 +80,7 @@ namespace PetCare
         {
             Debug.Log($"message received  canconsume= {canConsume}");
             petCanConsumeItem = canConsume;
-        }
-
-        //kitchen get the list from another server that will open and close json and serialize it!
+        }      
     }
 }
 

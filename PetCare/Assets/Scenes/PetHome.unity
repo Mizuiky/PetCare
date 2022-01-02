@@ -301,6 +301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Home
       objectReference: {fileID: 0}
+    - target: {fileID: 2580802357715891749, guid: 134884f727f7ea74294399cd9e3d7946, type: 3}
+      propertyPath: kitchenItems.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3429495888561322533, guid: 134884f727f7ea74294399cd9e3d7946, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

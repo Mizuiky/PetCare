@@ -14,7 +14,7 @@ namespace PetCare
         private Transform petLocation;
 
         [SerializeField]
-        private Pet[] pets;
+        private GameObject[] pets;
 
         #region Events
 
@@ -44,7 +44,7 @@ namespace PetCare
 
             BasketController.onDecreaseItemQuantity += IncreaseHungry;
 
-            EventController.onPlayerRotation += this.pet.Rotate;
+            EventController.onPlayerRotation += RotatePet;
         }
 
         public void Deactivate()
@@ -53,7 +53,7 @@ namespace PetCare
 
             BasketController.onDecreaseItemQuantity -= IncreaseHungry;
 
-            EventController.onPlayerRotation -= this.pet.Rotate;
+            EventController.onPlayerRotation -= RotatePet;
 
             this.gameObject.SetActive(false);
         }
@@ -65,9 +65,20 @@ namespace PetCare
 
         private void InstantiatePet()
         {
-            this.pet = Instantiate(pets[0], this.petLocation);
+            Debug.Log("instantiate pet");
 
-            var data = LoadPetData.loadData();
+
+            var newObj = Instantiate(this.pets[0], this.petLocation, false);
+
+            this.pet = new Pet();
+
+            this.pet = newObj.gameObject.AddComponent<Pet>();
+
+            var petData = LoadData.LoadPetData();
+
+            Debug.Log("instantiate pet after load data");
+
+            this.pet.SetInitialData(petData);
         }
 
         private void DecreaseStatus()
@@ -120,7 +131,21 @@ namespace PetCare
             }
 
             return canConsume;
-        }    
+        }   
+        
+        public void RotatePet(bool rightSide)
+        {
+            if (rightSide)
+            {
+                this.petLocation.Rotate(-new Vector3(0, this.pet.RotateAmount, 0));
+                Debug.Log("rotate right");
+            }
+            else
+            {
+                Debug.Log("rotate left");
+                this.petLocation.Rotate(new Vector3(0, this.pet.RotateAmount, 0));
+            }
+        }
     }
 }
 
