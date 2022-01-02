@@ -30,9 +30,7 @@ namespace PetCare
             {
                 this.KitchenStruture.SetActive(true);
 
-                this.kitchenItems = LoadData.LoadKitchenItems();
-
-                this.basket.Enable(kitchenItems);
+                this.basket.Enable(this.kitchenItems);
 
                 this.kitchenEnabled = false;
             }
@@ -50,6 +48,8 @@ namespace PetCare
             this.kitchenEnabled = true;
 
             this.kitchenItems = new List<ItemData>();
+
+             this.kitchenItems = LoadData.LoadKitchenItems();
 
             PetController.onHungryUpdate += CheckCanConsumeItem;
 

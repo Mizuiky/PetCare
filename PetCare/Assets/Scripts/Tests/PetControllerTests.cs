@@ -11,12 +11,15 @@ public class PetControllerTests
     [Test]
     public void DecreaseHungry_ShouldNotDecreaseHungryWhenItHasLessValueThanZero()
     {
-        IPet pet = Substitute.For<IPet>();
+        Pet pet = new Pet();
 
-        pet.Data = new PetData()
-        {
-            hungry = 3
-        };
+        pet.Data.Returns(
+            new PetData() 
+            { 
+                hungry = 3,
+                maxHungry = 10
+            }
+        );
 
         pet.Amount = 5; 
 

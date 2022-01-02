@@ -4,11 +4,9 @@ using UnityEngine;
 
 namespace PetCare
 {
-    public class PetController : MonoBehaviour
+    public class PetController : MonoBehaviour, IActivate
     {
         private Pet pet;
-
-        private int amountToUpdate;
 
         [SerializeField]
         private Transform petLocation;
@@ -30,8 +28,6 @@ namespace PetCare
         {
             InstantiatePet();
 
-            //pegar o component pet na cena;
-
             if (onChangeStatus != null)
             {
                 Debug.Log("start to change status");
@@ -40,6 +36,11 @@ namespace PetCare
 
             CheckCanConsumeItem();
 
+            Activate();
+        }
+
+        public void Activate()
+        {
             TimerController.onDecreaseStatus += DecreaseStatus;
 
             BasketController.onDecreaseItemQuantity += IncreaseHungry;

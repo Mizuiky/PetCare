@@ -8,7 +8,7 @@ namespace PetCare
     {
         #region Private Fields
 
-        private int rotationAmount;
+        private int rotationAmount = 10;
 
         private PetData data;
 
