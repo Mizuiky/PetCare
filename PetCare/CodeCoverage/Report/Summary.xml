@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageReport scope="Summary">
+  <Summary>
+    <Generatedon>02/01/2022 - 13:00:43</Generatedon>
+    <Parser>OpenCoverParser</Parser>
+    <Assemblies>3</Assemblies>
+    <Classes>14</Classes>
+    <Files>14</Files>
+    <Coveredlines>45</Coveredlines>
+    <Uncoveredlines>470</Uncoveredlines>
+    <Coverablelines>515</Coverablelines>
+    <Totallines>1186</Totallines>
+    <Linecoverage>8.7</Linecoverage>
+    <Coveredbranches>0</Coveredbranches>
+    <Totalbranches>0</Totalbranches>
+    <Coveredmethods>10</Coveredmethods>
+    <Totalmethods>87</Totalmethods>
+    <Methodcoverage>11.4</Methodcoverage>
+  </Summary>
+  <Coverage>
+    <Assembly name="Assembly-CSharp" classes="1" coverage="0" coveredlines="0" coverablelines="11" totallines="20" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0">
+      <Class name="ScrollBehaviour" coverage="0" coveredlines="0" coverablelines="11" totallines="20" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+    </Assembly>
+    <Assembly name="Scripts" classes="12" coverage="3.9" coveredlines="19" coverablelines="478" totallines="1086" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="81" methodcoverage="7.4">
+      <Class name="LoadData" coverage="0" coveredlines="0" coverablelines="9" totallines="69" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="PetCare.BasketController" coverage="0" coveredlines="0" coverablelines="112" totallines="219" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="12" methodcoverage="0" />
+      <Class name="PetCare.Candy" coverage="0" coveredlines="0" coverablelines="33" totallines="73" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="8" methodcoverage="0" />
+      <Class name="PetCare.EventController" coverage="0" coveredlines="0" coverablelines="28" totallines="85" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
+      <Class name="PetCare.GameManager" coverage="0" coveredlines="0" coverablelines="4" totallines="22" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="PetCare.HUD" coverage="0" coveredlines="0" coverablelines="8" totallines="32" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="PetCare.ItemData" coverage="0" coveredlines="0" coverablelines="30" totallines="83" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="10" methodcoverage="0" />
+      <Class name="PetCare.KitchenController" coverage="0" coveredlines="0" coverablelines="38" totallines="87" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="6" methodcoverage="0" />
+      <Class name="PetCare.Pet" coverage="35.8" coveredlines="19" coverablelines="53" totallines="104" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="13" methodcoverage="46.1" />
+      <Class name="PetCare.PetController" coverage="0" coveredlines="0" coverablelines="87" totallines="157" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="9" methodcoverage="0" />
+      <Class name="PetCare.TimerController" coverage="0" coveredlines="0" coverablelines="13" totallines="39" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="PetCare.UIController" coverage="0" coveredlines="0" coverablelines="63" totallines="116" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="10" methodcoverage="0" />
+    </Assembly>
+    <Assembly name="Tests" classes="1" coverage="100" coveredlines="26" coverablelines="26" totallines="80" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="4" methodcoverage="100">
+      <Class name="PetTests" coverage="100" coveredlines="26" coverablelines="26" totallines="80" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="4" methodcoverage="100" />
+    </Assembly>
+  </Coverage>
+</CoverageReport>

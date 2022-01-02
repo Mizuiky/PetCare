@@ -68,18 +68,23 @@ namespace PetCare
         {
             Debug.Log("instantiate pet");
 
-
             var newObj = Instantiate(this.pets[0], this.petLocation, false);
 
-            this.pet = new Pet();
+            if(newObj != null)
+            {
+                this.pet = new Pet();
 
-            this.pet = newObj.gameObject.AddComponent<Pet>();
+                this.pet = newObj.gameObject.GetComponent<Pet>();
 
-            var petData = LoadData.LoadPetData();
+                var petData = LoadData.LoadPetData();
 
-            Debug.Log("instantiate pet after load data");
+                Debug.Log("instantiate pet after load data");
 
-            this.pet.SetInitialData(petData);
+                if (pet != null)
+                {
+                    this.pet.SetInitialData(petData);
+                }
+            }            
         }
 
         private void DecreaseStatus()
