@@ -6,7 +6,7 @@ namespace PetCare
 {
     public interface IItem
     {
-        public BasketItems Item { get; set; }
+        public BasketItems ItemType { get; set; }
 
         public string Name { get; set; }
         public int Qtd { get; set; }

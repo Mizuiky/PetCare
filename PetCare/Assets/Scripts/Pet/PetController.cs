@@ -74,7 +74,7 @@ namespace PetCare
             {
                 this.pet = new Pet();
 
-                this.pet = newObj.gameObject.GetComponent<Pet>();
+                this.pet = newObj.gameObject.AddComponent<Pet>();
 
                 var petData = LoadData.LoadPetData();
 

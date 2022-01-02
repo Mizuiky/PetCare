@@ -19,7 +19,7 @@ namespace PetCare
         [SerializeField]
         private Transform[] itemsPlace;
 
-        private List<ItemData> basketDataList;
+        private List<Item> basketDataList;
 
         private Dictionary<int, GameObject> itensToSpawn;
 
@@ -35,7 +35,7 @@ namespace PetCare
         public delegate void OnDecreaseItemQuantity(int amount);
         public static event OnDecreaseItemQuantity onDecreaseItemQuantity;
 
-        public delegate void OnQuantityTextUpdate(List<ItemData> item);
+        public delegate void OnQuantityTextUpdate(List<Item> item);
         public static event OnQuantityTextUpdate onQuantityTextUpdate;
 
         #endregion
@@ -70,12 +70,12 @@ namespace PetCare
             }
         }
 
-        public void InitiateBasketData(List<ItemData> items)
+        public void InitiateBasketData(List<Item> items)
         {
             this.itensToSpawn = new Dictionary<int, GameObject>();
 
             //this will receive the reference from the list in the kitchen.
-            this.basketDataList = new List<ItemData>(items);
+            this.basketDataList = new List<Item>(items);
 
             for (int i = 0; i < items.Count; i++)
             {
@@ -97,7 +97,7 @@ namespace PetCare
         {
             Debug.Log($"updatequantity  canconsume= {KitchenController.petCanConsumeItem}");
 
-            foreach (ItemData data in this.basketDataList)
+            foreach (Item data in this.basketDataList)
             {
                 if (data.ID == item.ID)
                 {
@@ -144,7 +144,7 @@ namespace PetCare
             this.gameObject.SetActive(true);
         }
 
-        public void Enable(List<ItemData> items)
+        public void Enable(List<Item> items)
         {
             this.ResetMaterial();
             this.InitiateBasketData(items);
@@ -155,15 +155,13 @@ namespace PetCare
         private void OnDisable()
         {
             this.Disable();
-
-
         }
 
         public void Disable()
         {
             this.Deactivate();
 
-            //DespawnBasketItems();
+            DespawnBasketItems();
         }
 
         public void Deactivate()
@@ -183,7 +181,7 @@ namespace PetCare
 
                 var itemData = basketDataList.Find(x => x.ID == key);
 
-                var clone = Instantiate(this.itensToSpawn[key], itemsPlace[i], false);
+                var clone = Instantiate(this.itensToSpawn[key], this.itemsPlace[i], false);
 
                 clone.AddComponent(typeof(Candy));
 
@@ -202,8 +200,26 @@ namespace PetCare
         }
 
         public void DespawnBasketItems()
-        {
+        {         
+            foreach (Transform itemTransform in this.itemsPlace)
+            {
+                var children = itemTransform.gameObject.GetComponentInChildren<Candy>();
 
+                if(children != null)
+                {
+                    Destroy(children.gameObject);
+                }              
+            }
+                      
+            if(this.basketDataList.Count > 0)
+            {
+                this.basketDataList.Clear();
+            }
+            
+            if(this.itensToSpawn.Count > 0)
+            {
+                this.itensToSpawn.Clear();
+            }      
         }
 
         public void ResetMaterial()

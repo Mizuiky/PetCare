@@ -5,7 +5,7 @@ using UnityEngine;
 namespace PetCare
 {
     [System.Serializable]
-    public class ItemData : IItem
+    public class Item : IItem
     {
         private BasketItems item;
 
@@ -17,7 +17,7 @@ namespace PetCare
 
         private int hungryAmount;
 
-        public BasketItems Item
+        public BasketItems ItemType
         {
             get
             {

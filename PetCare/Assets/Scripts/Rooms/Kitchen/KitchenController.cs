@@ -7,7 +7,7 @@ namespace PetCare
     public class KitchenController : MonoBehaviour, IActivate
     {
         [SerializeField]
-        private List<ItemData> kitchenItems;
+        private List<Item> kitchenItems;
 
         [SerializeField]
         private BasketController basket;
@@ -30,6 +30,11 @@ namespace PetCare
             {
                 this.KitchenStruture.SetActive(true);
 
+                if(this.kitchenItems.Count == 0)
+                {
+                    this.kitchenItems = LoadData.LoadKitchenItems();
+                }
+               
                 this.basket.Enable(this.kitchenItems);
 
                 this.kitchenEnabled = false;
@@ -39,6 +44,9 @@ namespace PetCare
                 this.KitchenStruture.SetActive(false);
 
                 this.basket.Disable();
+
+                this.kitchenItems.Clear();
+
                 this.kitchenEnabled = true;
             }
         }
@@ -47,9 +55,9 @@ namespace PetCare
         {
             this.kitchenEnabled = true;
 
-            this.kitchenItems = new List<ItemData>();
+            this.kitchenItems = new List<Item>();
 
-             this.kitchenItems = LoadData.LoadKitchenItems();
+            this.kitchenItems = LoadData.LoadKitchenItems();
 
             PetController.onHungryUpdate += CheckCanConsumeItem;
 

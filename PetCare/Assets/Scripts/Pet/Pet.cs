@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PetCare
 {
-    public class Pet : IPet
+    public class Pet : MonoBehaviour, IPet
     {
         #region Private Fields
 

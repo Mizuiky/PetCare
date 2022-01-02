@@ -24,37 +24,42 @@ public static class LoadData
         return newData;
     }
 
-    public static List<ItemData> LoadKitchenItems()
+    public static void SavePetData(PetData petData)
     {
-        List<ItemData> items = new List<ItemData>()
+
+    }
+
+    public static List<Item> LoadKitchenItems()
+    {
+        List<Item> items = new List<Item>()
         {
-            new ItemData()
+            new Item()
             {
-                Item = BasketItems.Cookie,
+                ItemType = BasketItems.Cookie,
                 Name = "Cookie",
                 ID = 0,
                 Qtd = 5,
                 Amount = 1
             },
-            new ItemData()
+            new Item()
             {
-                Item = BasketItems.CupCake,
+                ItemType = BasketItems.CupCake,
                 Name = "CupCake",
                 ID = 1,
                 Qtd = 2,
                 Amount = 3
             },
-            new ItemData()
+            new Item()
             {
-                Item = BasketItems.ChocolateCake,
+                ItemType = BasketItems.ChocolateCake,
                 Name = "Cake",
                 ID = 2,
                 Qtd = 3,
                 Amount = 5
             },
-            new ItemData()
+            new Item()
             {
-                Item = BasketItems.Donut,
+                ItemType = BasketItems.Donut,
                 Name = "Donut",
                 ID = 3,
                 Qtd = 2,
@@ -63,6 +68,11 @@ public static class LoadData
         };
 
         return items;
+    }
+
+    public static void SaveKitchenItems(List<Item> kitchenItems)
+    {
+
     }
 }
 

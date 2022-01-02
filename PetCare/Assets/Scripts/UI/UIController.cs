@@ -66,7 +66,7 @@ namespace PetCare
             }
         }
 
-        public void UpdateQuantityTextField(List<ItemData> items)
+        public void UpdateQuantityTextField(List<Item> items)
         {
             Text currentText;
 
