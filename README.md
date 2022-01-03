@@ -42,6 +42,9 @@ The ideia was to create a simple prototype to review and learn new things from U
 
 7. Created a PetController that manage the instantiation and inject PetData to build the setted pet.
 
+8. PetData and KitchenData are saved when closing the game, and are loaded when opening the game. 
+* Find %AppData% folder and follow the path: C:..\AppData\LocalLow\DefaultCompany\PetCare\PetCareSaveData
+
 <h2 align="center">To do</h2> 
 
 1. Pet will be able to change rooms, going to the kitchen, backyard or the bedroom
