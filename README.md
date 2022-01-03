@@ -1,10 +1,31 @@
-# PetCare Project 
+<h1 align="center">PetCare Project </h1>
 
-This a game were it's possible to feed and play with the choosed Pet, this is inspired by the MyBoo2 Game from Tapps Games and Pou from Zakeh Ltd in the google play store.
+This is a game were it's possible to feed and play with the choosed Pet, this is inspired by the MyBoo2 Game from Tapps Games and Pou from Zakeh Ltd in the google play store.
 
 The ideia was to create a simple prototype to review and learn new things from Unity and game development, in order to achieve and reinforce developer habilities.
 
-## Implemented Features
+<h2 align="center">Project Images </h2>
+
+<p align="center">
+  <img src="PetCare/Assets/ProjectImagesVideos/Backyard.PNG" width="230">  
+  <img src="PetCare/Assets/ProjectImagesVideos/Kitchen.PNG" width="230">
+  <img src="PetCare/Assets/ProjectImagesVideos/FullHungry.PNG" width="230">
+  <img src="PetCare/Assets/ProjectImagesVideos/PetRotationGif.gif" width="230"/>
+</p>
+ 
+<h2 align="center">Implemented Features</h2> 
+
+### Foods
+* Pet can eat different foods to increase it hungry.
+* Pet can access the kitchen that has a basket with different food types.
+* Pet can't eat if it's hungry bar is full.
+* Pet decrease it's hungry by the passing time while the game is open.
+
+### Mechanics
+* Pet rotation.
+* Current rooms: backyard and kitchen.
+
+<h2 align="center">Detailed Implemented Features</h2> 
 
 1. The Kitchen and BasketController receives and Manage the items that the pet will be able to consume during the game.
 
@@ -20,8 +41,7 @@ The ideia was to create a simple prototype to review and learn new things from U
 
 7. Created a PetController that manage the instantiation and inject PetData to build the setted pet.
 
-
-## Future Features
+<h2 align="center">To do</h2> 
 
 1. Pet will be able to change rooms, going to the kitchen, backyard or the bedroom
     * In the backyard will be possible to Play a ballon game to gain points and restaure pet happiness
@@ -35,7 +55,7 @@ The ideia was to create a simple prototype to review and learn new things from U
 3. Choose Pet screen after beggining the game
     * User will be able to choose between 3 types of pets(just diferentiate the model) Penguin, Cat and the currently sheep.
 
-## Free Assets used
+<h2 align="center">Free Assets used</h2> 
 
 coffeeshop-starter-pack: 
 * https://assetstore.unity.com/packages/3d/props/coffeeshop-starter-pack-160914
