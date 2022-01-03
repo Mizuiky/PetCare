@@ -13,9 +13,6 @@ namespace PetCare
 
         public int maxHungry;
         public int maxHappiness;
-
-        public int initialHungry;
-        public int initialHappiness;
     }
 }
 

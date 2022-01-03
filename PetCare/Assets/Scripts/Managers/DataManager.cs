@@ -13,6 +13,7 @@ public static class DataManager
     public static string petFileName = "PetDataFile.txt";
     public static string kitchenDataFileName = "KitchenDataFile.txt";
 
+    #region Save
     public static void SavePetData(PetData petData)
     {
         if(!Directory.Exists(directory))
@@ -22,6 +23,8 @@ public static class DataManager
 
         string json = JsonUtility.ToJson(petData, true);
         File.WriteAllText(directory + petFileName, json);
+
+        Debug.Log("Saved data into PetDataFile.txt");
     }
 
     public static void SaveKitchenData(List<Item> kitchenItems)
@@ -35,7 +38,13 @@ public static class DataManager
 
         string json = JsonUtility.ToJson(list, true);
         File.WriteAllText(directory + kitchenDataFileName, json);
+
+        Debug.Log("Saved data into kitchenDataFile.txt");
     }
+
+    #endregion
+
+    #region Load
 
     public static PetData LoadPetData()
     {
@@ -50,23 +59,20 @@ public static class DataManager
             string json = File.ReadAllText(fullPath);
             data = JsonUtility.FromJson<PetData>(json);
 
-            Debug.Log("Saved data into PetDataFile.txt");
+            Debug.Log("Loaded data from PetDataFile.txt");
 
             return data;
         }
 
-        Debug.Log("Saved File doesn't exist, creating a default configuration");
+        Debug.Log("Saved File doesn't exist, creating a default start configuration");
 
         PetData newData = new PetData()
         {
-            hungry = 0,
-            happiness = 0,
+            hungry = 6,
+            happiness = 12,
 
             maxHungry = 15,
             maxHappiness = 15,
-
-            initialHungry = 6,
-            initialHappiness = 12,
         };
 
         return newData;
@@ -85,12 +91,12 @@ public static class DataManager
             string json = File.ReadAllText(fullPath);
             kitchenList = JsonUtility.FromJson<KitchenDataList>(json);
 
-            Debug.Log("Saved data into kitchenDataFile.txt");
+            Debug.Log("Loaded data from kitchenDataFile.txt");
 
             return kitchenList.kitchenItems;
         }
 
-        Debug.Log("Saved File doesn't exist, creating a default configuration");
+        Debug.Log("Saved File doesn't exist, creating a default start configuration");
 
         items = new List<Item>()
         {
@@ -133,6 +139,8 @@ public static class DataManager
 
         return items;
     }
+
+    #endregion
 }
 
 

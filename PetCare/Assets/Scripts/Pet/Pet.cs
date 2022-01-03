@@ -58,8 +58,8 @@ namespace PetCare
             this.data.maxHungry = newData.maxHungry;
             this.data.maxHappiness = newData.maxHappiness;
 
-            this.data.hungry = newData.initialHungry;
-            this.data.happiness = newData.initialHappiness;
+            this.data.hungry = newData.hungry;
+            this.data.happiness = newData.happiness;
         }
 
         public void UpdateStatus(PetData status)
