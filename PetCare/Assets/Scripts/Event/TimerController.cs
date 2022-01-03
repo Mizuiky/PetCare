@@ -19,8 +19,8 @@ namespace PetCare
 
         private IEnumerator Timer()
         {
-            yield return new WaitForSeconds(3f);
-            //Debug.Log("waiting until start began");
+            yield return new WaitForSeconds(2f);
+            //Debug.Log("waiting until start");
 
             while (true)
             {

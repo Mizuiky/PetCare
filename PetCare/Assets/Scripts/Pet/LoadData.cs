@@ -17,8 +17,8 @@ public static class LoadData
             maxHungry = 15,
             maxHappiness = 15,
 
-            initialHungry = 8,
-            initialHappiness = 10,
+            initialHungry = 6,
+            initialHappiness = 12,
         };
 
         return newData;

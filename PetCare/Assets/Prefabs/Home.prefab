@@ -418,6 +418,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4936327839871596003, guid: 6e19de98f9c8a70459ad53891d2427bc, type: 3}
+      propertyPath: roomsBackground.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4936327839871596003, guid: 6e19de98f9c8a70459ad53891d2427bc, type: 3}
       propertyPath: RoomsBackground.Array.data[0]
       value: 
       objectReference: {fileID: 4583631698495033990}
@@ -427,6 +431,18 @@ PrefabInstance:
       objectReference: {fileID: 3340832414785316656}
     - target: {fileID: 4936327839871596003, guid: 6e19de98f9c8a70459ad53891d2427bc, type: 3}
       propertyPath: RoomsBackground.Array.data[2]
+      value: 
+      objectReference: {fileID: 7009635676157493781, guid: 6c8b44110c3d63a4197a2eee91402a50, type: 3}
+    - target: {fileID: 4936327839871596003, guid: 6e19de98f9c8a70459ad53891d2427bc, type: 3}
+      propertyPath: roomsBackground.Array.data[0]
+      value: 
+      objectReference: {fileID: 4583631698495033990}
+    - target: {fileID: 4936327839871596003, guid: 6e19de98f9c8a70459ad53891d2427bc, type: 3}
+      propertyPath: roomsBackground.Array.data[1]
+      value: 
+      objectReference: {fileID: 3340832414785316656}
+    - target: {fileID: 4936327839871596003, guid: 6e19de98f9c8a70459ad53891d2427bc, type: 3}
+      propertyPath: roomsBackground.Array.data[2]
       value: 
       objectReference: {fileID: 7009635676157493781, guid: 6c8b44110c3d63a4197a2eee91402a50, type: 3}
     - target: {fileID: 5919722056434275693, guid: 6e19de98f9c8a70459ad53891d2427bc, type: 3}

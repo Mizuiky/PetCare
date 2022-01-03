@@ -17,7 +17,7 @@ namespace PetCare
         private GameObject basketQuantity;
 
         [SerializeField]
-        private GameObject[] RoomsBackground;
+        private GameObject[] roomsBackground;
 
         private List<Transform> itemQuantityText;
 
@@ -115,7 +115,7 @@ namespace PetCare
 
         private void ChangeRoomBackgroundVisibility(RoomType roomType, bool active)
         {
-            foreach (GameObject room in this.RoomsBackground)
+            foreach (GameObject room in this.roomsBackground)
             {
                 if (room.name.Contains(roomType.ToString()))
                 {

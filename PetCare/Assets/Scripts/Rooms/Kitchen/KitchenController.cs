@@ -14,7 +14,7 @@ namespace PetCare
         private BasketController basket;
 
         [SerializeField]
-        private GameObject KitchenStruture;
+        private GameObject kitchenStruture;
 
         private bool kitchenEnabled;
 
@@ -42,7 +42,7 @@ namespace PetCare
         {
             if (this.kitchenEnabled)
             {
-                this.KitchenStruture.SetActive(true);
+                this.kitchenStruture.SetActive(true);
 
                 if(onChangeBackgroundVisibity != null)
                 {
@@ -61,7 +61,7 @@ namespace PetCare
             }
             else
             {
-                this.KitchenStruture.SetActive(false);
+                this.kitchenStruture.SetActive(false);
 
                 if (onChangeBackgroundVisibity != null)
                 {
@@ -113,7 +113,7 @@ namespace PetCare
 
             this.kitchenItems.Clear();
 
-            this.KitchenStruture.SetActive(false);
+            this.kitchenStruture.SetActive(false);
             this.basket.gameObject.SetActive(false);
         }
 

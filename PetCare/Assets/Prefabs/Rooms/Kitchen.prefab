@@ -45,9 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27743a4b5f161845bea7df81bd14349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitchenItems: []
   basket: {fileID: 8668436225814484215}
-  KitchenStruture: {fileID: 9143695689158543380}
+  kitchenStruture: {fileID: 9143695689158543380}
 --- !u!1 &7029690613742325909
 GameObject:
   m_ObjectHideFlags: 0
