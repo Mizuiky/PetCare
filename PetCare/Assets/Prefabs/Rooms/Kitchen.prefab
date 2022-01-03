@@ -45,19 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27743a4b5f161845bea7df81bd14349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitchenItems:
-  - item: 0
-    qtd: 2
-    id: 0
-    hungryAmount: 5
-  - item: 1
-    qtd: 2
-    id: 1
-    hungryAmount: 2
-  - item: 3
-    qtd: 2
-    id: 2
-    hungryAmount: 3
+  kitchenItems: []
   basket: {fileID: 8668436225814484215}
   KitchenStruture: {fileID: 9143695689158543380}
 --- !u!1 &7029690613742325909
@@ -72,7 +60,7 @@ GameObject:
   - component: {fileID: 7029690613742325907}
   - component: {fileID: 7029690613742325908}
   m_Layer: 0
-  m_Name: KitchenBackgroun
+  m_Name: KitchenBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,6 +7,8 @@ namespace PetCare
 {
     public class EventController: MonoBehaviour
     {
+        #region Game Events
+
         public delegate void OnPlayerRotation(bool rotateToRight);
         public static event OnPlayerRotation onPlayerRotation;
 
@@ -16,11 +18,10 @@ namespace PetCare
         public delegate void OnChangeButtonStatus();
         public static event OnChangeButtonStatus onChangeButtonStatus;
 
-        public delegate void OnChangeStatus(PetData status);
-        public static event OnChangeStatus onChangeStatus;
-
         public delegate void OnHungryUpdate(bool canConsume);
         public static event OnHungryUpdate onHungryUpdate;
+
+        #endregion
 
         #region Scene Events
 
@@ -43,11 +44,8 @@ namespace PetCare
 
         public void ApplyRotation(bool rotateToRight)
         {
-            Debug.Log("start apply rotation event");
-
             if (onPlayerRotation != null)
             {
-                Debug.Log("!= null");
                 onPlayerRotation(rotateToRight);
             }
         }
@@ -58,11 +56,8 @@ namespace PetCare
 
         public void OpenKitchen()
         {
-            Debug.Log("Open Kitchen");
-
             if (onNotifyKitchen != null)
             {
-                Debug.Log("Open Kitchen != null");
                 onNotifyKitchen();
             }
         }

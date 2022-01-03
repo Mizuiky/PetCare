@@ -14,11 +14,11 @@ public static class LoadData
             hungry = 0,
             happiness = 0,
 
-            maxHungry = 10,
-            maxHappiness = 10,
+            maxHungry = 15,
+            maxHappiness = 15,
 
             initialHungry = 8,
-            initialHappiness = 5,
+            initialHappiness = 10,
         };
 
         return newData;
@@ -52,7 +52,7 @@ public static class LoadData
             new Item()
             {
                 ItemType = BasketItems.ChocolateCake,
-                Name = "Cake",
+                Name = "ChocolateCake",
                 ID = 2,
                 Qtd = 3,
                 Amount = 5
@@ -64,13 +64,21 @@ public static class LoadData
                 ID = 3,
                 Qtd = 2,
                 Amount = 2
+            },
+            new Item()
+            {
+                ItemType = BasketItems.WhiteDonut,
+                Name = "WhiteDonut",
+                ID = 4,
+                Qtd = 1,
+                Amount = 4
             }
         };
 
         return items;
     }
 
-    public static void SaveKitchenItems(List<Item> kitchenItems)
+    public static void SaveKitchenData(List<Item> kitchenItems)
     {
 
     }

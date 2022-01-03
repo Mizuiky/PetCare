@@ -53,7 +53,6 @@ namespace PetCare
 
         public void SetInitialData(PetData newData)
         {
-            Debug.Log("setting initial status");
             this.data = new PetData();
 ;
             this.data.maxHungry = newData.maxHungry;
@@ -61,14 +60,10 @@ namespace PetCare
 
             this.data.hungry = newData.initialHungry;
             this.data.happiness = newData.initialHappiness;
-
-            Debug.Log("initial status setted");
         }
 
         public void UpdateStatus(PetData status)
         {
-            Debug.Log("updating status");
-
             this.data.maxHungry = status.maxHungry;
             this.data.maxHappiness = status.maxHappiness;
 

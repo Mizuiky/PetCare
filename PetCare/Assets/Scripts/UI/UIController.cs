@@ -16,6 +16,9 @@ namespace PetCare
         [SerializeField]
         private GameObject basketQuantity;
 
+        [SerializeField]
+        private GameObject[] RoomsBackground;
+
         private List<Transform> itemQuantityText;
 
         void Awake()
@@ -29,13 +32,13 @@ namespace PetCare
             PetController.onChangeStatus += UpdateHud;
             EventController.onChangeButtonStatus += UpdateButtonActiveStatus;
             BasketController.onQuantityTextUpdate += UpdateQuantityTextField;
+            KitchenController.onChangeBackgroundVisibity += ChangeRoomBackgroundVisibility;
         }
 
         private void UpdateHud(PetData status)
         {
-            //Debug.Log("updateHUD");
+            Debug.Log("updateHUD");
 
-            //update this when player gain level on happiness and hungry, create an initial method to set the initial max status
             this.hud.UpdateMaxStatusBar(status);
 
             this.hud.UpdateStatusBar(status);
@@ -51,6 +54,7 @@ namespace PetCare
             PetController.onChangeStatus -= this.UpdateHud;
             EventController.onChangeButtonStatus -= this.UpdateButtonActiveStatus;
             BasketController.onQuantityTextUpdate -= UpdateQuantityTextField;
+            KitchenController.onChangeBackgroundVisibity -= ChangeRoomBackgroundVisibility;
         }
 
         public void UpdateButtonActiveStatus()
@@ -108,9 +112,20 @@ namespace PetCare
             this.itemQuantityText.ForEach(x => x.gameObject.SetActive(visible));
         }
 
-        private void CleanTextList()
+        private void ClearTextList()
         {
             this.itemQuantityText.Clear();
+        }
+
+        private void ChangeRoomBackgroundVisibility(RoomType roomType, bool active)
+        {
+            foreach (GameObject room in this.RoomsBackground)
+            {
+                if (room.name.Contains(roomType.ToString()))
+                {
+                    room.SetActive(active);
+                }
+            }
         }
     }
 }

@@ -6,7 +6,8 @@ namespace PetCare
 {
     public class KitchenController : MonoBehaviour, IActivate
     {
-        [SerializeField]
+        #region Private Fields
+
         private List<Item> kitchenItems;
 
         [SerializeField]
@@ -17,7 +18,16 @@ namespace PetCare
 
         private bool kitchenEnabled;
 
+        #endregion
+
         public static bool petCanConsumeItem;
+
+        #region Events
+
+        public delegate void OnChangeBackgroundVisibity(RoomType roomType, bool active);
+        public static event OnChangeBackgroundVisibity onChangeBackgroundVisibity;
+
+        #endregion
 
         void Awake()
         {
@@ -29,6 +39,12 @@ namespace PetCare
             if (this.kitchenEnabled)
             {
                 this.KitchenStruture.SetActive(true);
+
+                if(onChangeBackgroundVisibity != null)
+                {
+                    onChangeBackgroundVisibity(RoomType.Backyard, false);
+                    onChangeBackgroundVisibity(RoomType.Kitchen, true);
+                }
 
                 if(this.kitchenItems.Count == 0)
                 {
@@ -42,6 +58,12 @@ namespace PetCare
             else
             {
                 this.KitchenStruture.SetActive(false);
+
+                if (onChangeBackgroundVisibity != null)
+                {
+                    onChangeBackgroundVisibity(RoomType.Kitchen, false);
+                    onChangeBackgroundVisibity(RoomType.Backyard, true);
+                }
 
                 this.basket.Disable();
 

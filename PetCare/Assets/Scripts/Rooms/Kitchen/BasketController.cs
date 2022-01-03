@@ -62,7 +62,6 @@ namespace PetCare
 
                         if (sweet != null)
                         {
-                            Debug.Log("clicking on the sweet");
                             UpdateItemQuantity(sweet);
                         }
                     }
@@ -103,7 +102,7 @@ namespace PetCare
                 {
                     if (data.Qtd > 0 && KitchenController.petCanConsumeItem)
                     {
-                        Debug.Log("Pet is not full health presseg with qtd--");
+                        Debug.Log("Pet is not full hungry proceed with qtd--");
                         data.Qtd -= 1;
 
                         if (data.Qtd == 0)
@@ -116,28 +115,15 @@ namespace PetCare
                             onQuantityTextUpdate(this.basketDataList);
                         }
 
-                        //will tell the player that an updated in the health was done
+                        //will tell the player that an updated in the hungry was done
                         if (onDecreaseItemQuantity != null)
                         {
-                            Debug.Log("Message to the player");
                             onDecreaseItemQuantity(data.Amount);
                         }
                     }
                 }
             }
         }
-
-        /*public List<string> getItemList(ItemData[] items)
-        {
-            var itemList = new List<string>();
-
-            foreach(ItemData item in items)
-            {
-                itemList.Add(item.Name);
-            }
-
-            return itemList;
-        }*/
 
         public void Activate()
         {
