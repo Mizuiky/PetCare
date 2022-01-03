@@ -1,5 +1,8 @@
+using System;
+
 namespace PetCare
 {
+    [Serializable]
     public enum BasketItems
     {
         CupCake = 0,

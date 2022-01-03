@@ -18,9 +18,6 @@ namespace PetCare
         public delegate void OnChangeButtonStatus();
         public static event OnChangeButtonStatus onChangeButtonStatus;
 
-        public delegate void OnHungryUpdate(bool canConsume);
-        public static event OnHungryUpdate onHungryUpdate;
-
         #endregion
 
         #region Scene Events

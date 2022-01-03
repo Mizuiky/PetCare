@@ -1,23 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace PetCare
 {
-    [System.Serializable]
+    [Serializable]
     public class Item : IItem
     {
-        private BasketItems item;
+        [SerializeField]
+        private string item;
 
-        private string name;
-
+        [SerializeField]
         private int qtd;
 
+        [SerializeField]
         private int id;
 
+        [SerializeField]
         private int hungryAmount;
 
-        public BasketItems ItemType
+        public string ItemType
         {
             get
             {
@@ -25,19 +28,8 @@ namespace PetCare
             }
             set
             {
-                this.item = value;
-            }
-        }
 
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                this.name = value;
+                this.item = value;
             }
         }
 

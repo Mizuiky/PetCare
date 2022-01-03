@@ -78,7 +78,7 @@ namespace PetCare
 
             for (int i = 0; i < items.Count; i++)
             {
-                var item = Array.Find(this.content, content => content.name.Contains(items[i].Name));
+                var item = Array.Find(this.content, content => content.name.Contains(items[i].ItemType));
 
                 if (item != null)
                 {

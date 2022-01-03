@@ -86,7 +86,7 @@ namespace PetCare
 
             this.kitchenItems = new List<Item>();
 
-            this.kitchenItems = LoadData.LoadKitchenItems();
+            this.kitchenItems = DataManager.LoadKitchenItems();
 
             PetController.onHungryUpdate += CheckCanConsumeItem;
 
@@ -109,7 +109,7 @@ namespace PetCare
 
             EventController.onNotifyKitchen -= EnableBasket;
 
-            LoadData.SaveKitchenData(this.kitchenItems);
+            DataManager.SaveKitchenData(this.kitchenItems);
 
             this.kitchenItems.Clear();
 

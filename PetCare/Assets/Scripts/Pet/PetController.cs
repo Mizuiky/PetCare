@@ -56,6 +56,8 @@ namespace PetCare
 
             EventController.onPlayerRotation -= RotatePet;
 
+            DataManager.SavePetData(this.pet.Data);
+
             this.gameObject.SetActive(false);
         }
 
@@ -76,7 +78,7 @@ namespace PetCare
 
                 this.pet = newObj.gameObject.AddComponent<Pet>();
 
-                var petData = LoadData.LoadPetData();
+                var petData = DataManager.LoadPetData();
 
                 Debug.Log("instantiate pet after load data");
 

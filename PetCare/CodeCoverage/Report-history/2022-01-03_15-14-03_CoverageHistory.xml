@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2022-01-03_15-14-03" tag="">
+  <assembly name="Assembly-CSharp">
+    <class name="ScrollBehaviour" coveredlines="0" coverablelines="11" totallines="20" coveredbranches="0" totalbranches="0" />
+  </assembly>
+  <assembly name="Scripts">
+    <class name="LoadData" coveredlines="0" coverablelines="13" totallines="87" coveredbranches="0" totalbranches="0" />
+    <class name="PetCare.BasketController" coveredlines="0" coverablelines="127" totallines="221" coveredbranches="0" totalbranches="0" />
+    <class name="PetCare.Candy" coveredlines="0" coverablelines="33" totallines="73" coveredbranches="0" totalbranches="0" />
+    <class name="PetCare.EventController" coveredlines="0" coverablelines="24" totallines="77" coveredbranches="0" totalbranches="0" />
+    <class name="PetCare.GameManager" coveredlines="0" coverablelines="4" totallines="22" coveredbranches="0" totalbranches="0" />
+    <class name="PetCare.HUD" coveredlines="0" coverablelines="8" totallines="32" coveredbranches="0" totalbranches="0" />
+    <class name="PetCare.Item" coveredlines="0" coverablelines="30" totallines="83" coveredbranches="0" totalbranches="0" />
+    <class name="PetCare.KitchenController" coveredlines="0" coverablelines="58" totallines="128" coveredbranches="0" totalbranches="0" />
+    <class name="PetCare.Pet" coveredlines="19" coverablelines="50" totallines="99" coveredbranches="0" totalbranches="0" />
+    <class name="PetCare.PetController" coveredlines="0" coverablelines="87" totallines="157" coveredbranches="0" totalbranches="0" />
+    <class name="PetCare.TimerController" coveredlines="0" coverablelines="13" totallines="39" coveredbranches="0" totalbranches="0" />
+    <class name="PetCare.UIController" coveredlines="0" coverablelines="73" totallines="127" coveredbranches="0" totalbranches="0" />
+  </assembly>
+  <assembly name="Tests">
+    <class name="PetTests" coveredlines="26" coverablelines="26" totallines="80" coveredbranches="0" totalbranches="0" />
+  </assembly>
+</coverage>
