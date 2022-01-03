@@ -27,6 +27,10 @@ namespace PetCare
         public delegate void OnChangeBackgroundVisibity(RoomType roomType, bool active);
         public static event OnChangeBackgroundVisibity onChangeBackgroundVisibity;
 
+        public delegate void OnShowUIQuantity(bool hide);
+        public static event OnShowUIQuantity onShowUIQuantity;
+
+
         #endregion
 
         void Awake()
@@ -44,14 +48,14 @@ namespace PetCare
                 {
                     onChangeBackgroundVisibity(RoomType.Backyard, false);
                     onChangeBackgroundVisibity(RoomType.Kitchen, true);
-                }
-
-                if(this.kitchenItems.Count == 0)
-                {
-                    this.kitchenItems = LoadData.LoadKitchenItems();
-                }
+                }                
                
                 this.basket.Enable(this.kitchenItems);
+
+                if (onShowUIQuantity != null)
+                {
+                    onShowUIQuantity(true);                   
+                }
 
                 this.kitchenEnabled = false;
             }
@@ -67,7 +71,10 @@ namespace PetCare
 
                 this.basket.Disable();
 
-                this.kitchenItems.Clear();
+                if (onShowUIQuantity != null)
+                {
+                    onShowUIQuantity(false);
+                }           
 
                 this.kitchenEnabled = true;
             }
@@ -101,6 +108,10 @@ namespace PetCare
             PetController.onHungryUpdate -= CheckCanConsumeItem;
 
             EventController.onNotifyKitchen -= EnableBasket;
+
+            LoadData.SaveKitchenData(this.kitchenItems);
+
+            this.kitchenItems.Clear();
 
             this.KitchenStruture.SetActive(false);
             this.basket.gameObject.SetActive(false);

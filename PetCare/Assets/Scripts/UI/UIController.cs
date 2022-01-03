@@ -33,6 +33,7 @@ namespace PetCare
             EventController.onChangeButtonStatus += UpdateButtonActiveStatus;
             BasketController.onQuantityTextUpdate += UpdateQuantityTextField;
             KitchenController.onChangeBackgroundVisibity += ChangeRoomBackgroundVisibility;
+            KitchenController.onShowUIQuantity += SetTextVisibility;
         }
 
         private void UpdateHud(PetData status)
@@ -55,11 +56,11 @@ namespace PetCare
             EventController.onChangeButtonStatus -= this.UpdateButtonActiveStatus;
             BasketController.onQuantityTextUpdate -= UpdateQuantityTextField;
             KitchenController.onChangeBackgroundVisibity -= ChangeRoomBackgroundVisibility;
+            KitchenController.onShowUIQuantity -= SetTextVisibility;
         }
 
         public void UpdateButtonActiveStatus()
         {
-            Debug.Log("test 1");
             bool active = false;
 
             foreach (GameObject button in UIButtons)
@@ -110,11 +111,6 @@ namespace PetCare
         private void SetTextVisibility(bool visible)
         {
             this.itemQuantityText.ForEach(x => x.gameObject.SetActive(visible));
-        }
-
-        private void ClearTextList()
-        {
-            this.itemQuantityText.Clear();
         }
 
         private void ChangeRoomBackgroundVisibility(RoomType roomType, bool active)
