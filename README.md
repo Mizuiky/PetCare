@@ -57,6 +57,8 @@ The ideia was to create a simple prototype to review and learn new things from U
     *
 4. Add Sounds to the game.
 
+5. Change and Build the game for mobile platform.
+
 <h2 align="center">Free Assets used</h2> 
 
 coffeeshop-starter-pack: 
