@@ -11,6 +11,7 @@ The ideia was to create a simple prototype to review and learn new things from U
   <img src="PetCare/Assets/ProjectImagesVideos/Kitchen.PNG" width="230">
   <img src="PetCare/Assets/ProjectImagesVideos/FullHungry.PNG" width="230">
   <img src="PetCare/Assets/ProjectImagesVideos/PetRotationGif.gif" width="230"/>
+  <img src="PetCare/Assets/ProjectImagesVideos/PetCareDemoGif.gif" width="230"/>
 </p>
  
 <h2 align="center">Implemented Features</h2> 
