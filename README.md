@@ -54,6 +54,8 @@ The ideia was to create a simple prototype to review and learn new things from U
 
 3. Choose Pet screen after beggining the game
     * User will be able to choose between 3 types of pets(just diferentiate the model) Penguin, Cat and the currently sheep.
+    *
+4. Add Sounds to the game.
 
 <h2 align="center">Free Assets used</h2> 
 
