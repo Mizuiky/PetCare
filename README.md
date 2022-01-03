@@ -1,4 +1,4 @@
-<h1 align="center">PetCare Project </h1>
+<h1 align="center">PetCare Project <img src="PetCare/Assets/ProjectImagesVideos/UnityImage.jfif" width="30"> </h1>  
 
 This is a game were it's possible to feed and play with the choosed Pet, this is inspired by the MyBoo2 Game from Tapps Games and Pou from Zakeh Ltd in the google play store.
 
